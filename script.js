@@ -44,6 +44,30 @@ function addActiveNavLinkStyle(linkNumber) {
   navLinks[linkNumber].style.fontWeight = "bold";
 }
 
+//darkmode
+let darkModeText = document.querySelectorAll(".text-dmode");
+let darkModeBtn = document.querySelector(".darkMode");
+let darkModeBg = document.querySelectorAll(".bg-dmode");
+let lightModeBtn = document.querySelector(".lightMode");
+darkModeBtn.addEventListener("click", function () {
+  for (let i = 0; i < darkModeText.length; i++) {
+    darkModeText[i].style.color = "white";
+    darkModeText[i].style.transition = "1s";
+  }
+  for (let i = 0; i < darkModeBg.length; i++) {
+    darkModeBg[i].style.backgroundColor = "#0E0F11";
+  }
+});
+lightModeBtn.addEventListener("click", function () {
+  for (let i = 0; i < darkModeText.length; i++) {
+    darkModeText[i].style.color = "black";
+    darkModeText[i].style.transition = "1s";
+  }
+  for (let i = 0; i < darkModeBg.length; i++) {
+    darkModeBg[i].style.backgroundColor = "#F2F5F7";
+  }
+});
+
 //sub title animation
 var TxtType = function (el, toRotate, period) {
   this.toRotate = toRotate;
