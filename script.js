@@ -1,42 +1,82 @@
 //nav-link
 let navLinks = document.querySelectorAll(".nlink");
+let indicator = document.querySelector(".indicator");
 for (let i = 0; i < navLinks.length; i++) {
   navLinks[i].addEventListener("click", function () {
     if (i == 0) {
       addActiveNavLinkStyle(0);
-      eraseActiveNavLink(1);
-      eraseActiveNavLink(2);
-      eraseActiveNavLink(3);
-      eraseActiveNavLink(4);
+      if (indicator.textContent == "dark") {
+        eraseActiveNavLinkDarkMode(1);
+        eraseActiveNavLinkDarkMode(2);
+        eraseActiveNavLinkDarkMode(3);
+        eraseActiveNavLinkDarkMode(4);
+      } else if (indicator.textContent == "light") {
+        eraseActiveNavLinkLightMode(1);
+        eraseActiveNavLinkLightMode(2);
+        eraseActiveNavLinkLightMode(3);
+        eraseActiveNavLinkLightMode(4);
+      }
     } else if (i == 1) {
       addActiveNavLinkStyle(1);
-      eraseActiveNavLink(0);
-      eraseActiveNavLink(2);
-      eraseActiveNavLink(3);
-      eraseActiveNavLink(4);
+      if (indicator.textContent == "dark") {
+        eraseActiveNavLinkDarkMode(0);
+        eraseActiveNavLinkDarkMode(2);
+        eraseActiveNavLinkDarkMode(3);
+        eraseActiveNavLinkDarkMode(4);
+      } else if (indicator.textContent == "light") {
+        eraseActiveNavLinkLightMode(0);
+        eraseActiveNavLinkLightMode(2);
+        eraseActiveNavLinkLightMode(3);
+        eraseActiveNavLinkLightMode(4);
+      }
     } else if (i == 2) {
       addActiveNavLinkStyle(2);
-      eraseActiveNavLink(1);
-      eraseActiveNavLink(0);
-      eraseActiveNavLink(3);
-      eraseActiveNavLink(4);
+      if (indicator.textContent == "dark") {
+        eraseActiveNavLinkDarkMode(1);
+        eraseActiveNavLinkDarkMode(0);
+        eraseActiveNavLinkDarkMode(3);
+        eraseActiveNavLinkDarkMode(4);
+      } else if (indicator.textContent == "light") {
+        eraseActiveNavLinkLightMode(1);
+        eraseActiveNavLinkLightMode(0);
+        eraseActiveNavLinkLightMode(3);
+        eraseActiveNavLinkLightMode(4);
+      }
     } else if (i == 3) {
       addActiveNavLinkStyle(3);
-      eraseActiveNavLink(1);
-      eraseActiveNavLink(2);
-      eraseActiveNavLink(0);
-      eraseActiveNavLink(4);
+      if (indicator.textContent == "dark") {
+        eraseActiveNavLinkDarkMode(1);
+        eraseActiveNavLinkDarkMode(2);
+        eraseActiveNavLinkDarkMode(0);
+        eraseActiveNavLinkDarkMode(4);
+      } else if (indicator.textContent == "light") {
+        eraseActiveNavLinkLightMode(1);
+        eraseActiveNavLinkLightMode(2);
+        eraseActiveNavLinkLightMode(0);
+        eraseActiveNavLinkLightMode(4);
+      }
     } else if (i == 4) {
       addActiveNavLinkStyle(4);
-      eraseActiveNavLink(1);
-      eraseActiveNavLink(2);
-      eraseActiveNavLink(3);
-      eraseActiveNavLink(0);
+      if (indicator.textContent == "dark") {
+        eraseActiveNavLinkDarkMode(1);
+        eraseActiveNavLinkDarkMode(2);
+        eraseActiveNavLinkDarkMode(3);
+        eraseActiveNavLinkDarkMode(0);
+      } else if (indicator.textContent == "light") {
+        eraseActiveNavLinkLightMode(1);
+        eraseActiveNavLinkLightMode(2);
+        eraseActiveNavLinkLightMode(3);
+        eraseActiveNavLinkLightMode(0);
+      }
     }
   });
 }
-function eraseActiveNavLink(linkNumber) {
+function eraseActiveNavLinkLightMode(linkNumber) {
   navLinks[linkNumber].style.color = "black";
+  navLinks[linkNumber].style.fontWeight = "normal";
+}
+function eraseActiveNavLinkDarkMode(linkNumber) {
+  navLinks[linkNumber].style.color = "white";
   navLinks[linkNumber].style.fontWeight = "normal";
 }
 function addActiveNavLinkStyle(linkNumber) {
@@ -50,6 +90,7 @@ let darkModeBtn = document.querySelector(".darkMode");
 let darkModeBg = document.querySelectorAll(".bg-dmode");
 let lightModeBtn = document.querySelector(".lightMode");
 darkModeBtn.addEventListener("click", function () {
+  indicator.textContent = "dark";
   for (let i = 0; i < darkModeText.length; i++) {
     darkModeText[i].style.color = "white";
     darkModeText[i].style.transition = "1s";
@@ -59,6 +100,7 @@ darkModeBtn.addEventListener("click", function () {
   }
 });
 lightModeBtn.addEventListener("click", function () {
+  indicator.textContent = "light";
   for (let i = 0; i < darkModeText.length; i++) {
     darkModeText[i].style.color = "black";
     darkModeText[i].style.transition = "1s";

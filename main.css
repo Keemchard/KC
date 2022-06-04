@@ -89,8 +89,8 @@ nav .menu ul {
   transition: 0.25s;
 }
 .menu a:hover {
-  color: #3f4546 !important;
-  font-weight: bold !important;
+  color: #3f4546;
+  font-weight: bold;
 }
 
 .sec {
@@ -132,7 +132,7 @@ nav .menu ul {
 
 .dropdown-content a:hover {
   background-color: #f1f1f1;
-  color: #ff3c00 !important;
+  color: #ff3c00;
 }
 
 .dropdown:hover .dropdown-content {
