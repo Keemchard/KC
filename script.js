@@ -106,7 +106,7 @@ lightModeBtn.addEventListener("click", function () {
     darkModeText[i].style.transition = "1s";
   }
   for (let i = 0; i < darkModeBg.length; i++) {
-    darkModeBg[i].style.backgroundColor = "#F2F5F7";
+    darkModeBg[i].style.backgroundColor = "white";
   }
 });
 
