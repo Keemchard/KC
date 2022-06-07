@@ -36,6 +36,7 @@ a {
 }
 
 nav {
+  transition: 2s;
   background-color: transparent;
   padding: 10px 0;
   position: fixed;
@@ -43,7 +44,9 @@ nav {
   z-index: 2;
   /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); */
 }
-
+.menu .uil {
+  display: none;
+}
 .main-nav {
   margin: auto;
   /* background-color: aqua; */
@@ -85,6 +88,7 @@ nav .menu ul {
   list-style: none;
   display: flex;
   justify-content: space-between;
+  transition: 2s;
 }
 
 .menu a {
@@ -101,6 +105,7 @@ nav .menu ul {
   /* background-color: burlywood; */
   /* border: 1px solid white; */
   padding: 10px;
+  transition: 2s;
 }
 
 /* DROPDOWN */
@@ -149,6 +154,7 @@ nav .menu ul {
   display: flex;
   align-items: center;
   position: relative;
+  transition: 2s;
 }
 
 .arrow-down {
@@ -197,6 +203,7 @@ nav .menu ul {
   height: 100%;
   display: flex;
   /* align-items: center; */
+  transition: 2s;
 }
 
 .section-1 .profile-txt {
@@ -206,11 +213,15 @@ nav .menu ul {
   justify-content: center;
   background-color: white;
   position: relative;
+  transition: 2s;
 }
 
 .profile-txt .prof-name {
   font-size: 45px;
   line-height: 70px;
+  font-weight: bold;
+  color: #2f4858;
+  transition: 2s;
 }
 
 .prof-name .span-name {
@@ -228,22 +239,13 @@ nav .menu ul {
   transition: 0.25s;
 }
 
-/* @supports
-  ((text-stroke: 2px black) or (-webkit-text-stroke: 2px black)) {
-  .span-name {
-    color: transparent;
-    -webkit-text-stroke: 2px black;
-    text-stroke: 2px black;
-    text-shadow: none;
-  }
-} */
-
 .excla-span:hover {
   color: #ff3c00;
 }
 
 .typewrite {
   font-size: 22px;
+  transition: 2s;
 }
 
 .sub {
@@ -312,6 +314,7 @@ nav .menu ul {
   width: 400px;
   margin-top: -90px;
   margin-left: -50px;
+  transition: 2s;
 }
 
 .flip-card-prof {
@@ -590,4 +593,243 @@ nav .menu ul {
 /* --------------------SECTION 4-------------------- */
 .section-4 {
   background-color: springgreen;
+}
+
+/* --------------------MOSA---------------------- */
+
+@media only screen and (max-width: 1134px) {
+  .section-1 {
+    /* background-color: #2980b9; */
+  }
+
+  .profile-mini-con img {
+    width: 370px;
+    margin-top: -90px;
+    margin-left: -50px;
+  }
+
+  .flip-card-prof {
+    background-color: transparent;
+    width: 300px;
+    height: 300px;
+    perspective: 1000px;
+  }
+}
+
+@media only screen and (max-width: 1124px) {
+  .section-1 {
+    /* background-color: gray; */
+    flex-direction: column;
+  }
+  .section-1 > div {
+    /* border: 1px solid yellow; */
+    flex: 1;
+  }
+  .profile-mini-con {
+    height: auto;
+  }
+  .profile-txt {
+    order: 2;
+  }
+  .profile-img {
+    order: 1;
+    /* background-color: #2980b9; */
+    width: 100%;
+  }
+  .profile-mini-con img {
+    width: 300px;
+    margin-top: 50px;
+    margin-left: 0px;
+  }
+  .flip-card-prof {
+    background-color: transparent;
+    width: 300px;
+    height: 300px;
+    perspective: 1000px;
+  }
+  .arrow-down {
+    display: none;
+  }
+
+  .profile-txt .prof-name {
+    font-size: 45px;
+    line-height: 70px;
+  }
+
+  .prof-name .span-name {
+    font-weight: 900;
+    font-size: 60px;
+  }
+
+  .excla-span {
+    font-size: 50px;
+  }
+
+  .about-shortcut {
+    width: 200px;
+    padding: 10px 15px;
+    font-size: 15px;
+  }
+
+  .typewrite {
+    font-size: 20px;
+  }
+
+  .sec1-icon ul li a {
+    font-size: 20px;
+  }
+}
+
+@media only screen and (max-width: 1004px) {
+  .profile-mini-con img {
+    margin-top: 10px;
+  }
+  .section-1 .profile-txt {
+    margin-top: -40px;
+  }
+  .profile-txt .prof-name {
+    line-height: 60px;
+  }
+  .sec1-icon ul {
+    margin: 12px 0 20px -10px;
+  }
+  nav {
+    bottom: 0;
+    padding: 0;
+    box-shadow: 0 -4px 8px 0 rgba(0, 0, 0, 0.2),
+      0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+  }
+  .menu .uil {
+    display: flex;
+  }
+  .main-nav {
+    height: 50px;
+    padding: 10px 20px;
+  }
+  .main-nav > div {
+    flex: 1;
+  }
+  .logo {
+    display: none;
+  }
+  nav .menu ul {
+    list-style: none;
+    display: flex;
+    justify-content: space-around;
+    font-size: 27px;
+    align-items: center;
+  }
+  .dropdown-content {
+    top: -190px;
+    right: -10px;
+  }
+  .dropbtn {
+    font-size: 27px;
+  }
+  .dropdown a {
+    font-size: 14px;
+  }
+  .s-link {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 638px) {
+  .profile-img {
+    margin-left: 0;
+  }
+  .profile-img {
+    order: 1;
+    /* background-color: #2980b9; */
+    width: 100%;
+  }
+  .profile-mini-con img {
+    width: 280px;
+    margin-top: 40px;
+    margin-left: 0px;
+  }
+  .flip-card-prof {
+    width: 280px;
+    height: 280px;
+  }
+
+  .flip-card-prof {
+    width: 280px;
+    height: 280px;
+  }
+}
+
+@media only screen and (max-width: 532px) {
+  .container {
+    padding: 0 20px;
+  }
+  .profile-mini-con img {
+    margin-top: 10px;
+  }
+  .section-1 .profile-txt {
+    margin-top: -70px;
+  }
+
+  .profile-txt .prof-name {
+    font-size: 40px;
+    line-height: 55px;
+  }
+
+  .prof-name .span-name {
+    font-weight: 900;
+    font-size: 55px;
+  }
+
+  .excla-span {
+    font-size: 45px;
+  }
+
+  .about-shortcut {
+    font-size: 15px;
+  }
+
+  .typewrite {
+    font-size: 20px;
+  }
+
+  .sec1-icon ul li a {
+    font-size: 18px;
+  }
+}
+
+@media only screen and (max-width: 416px) {
+  .profile-mini-con img {
+    margin-top: 10px;
+  }
+  .section-1 .profile-txt {
+    margin-top: -70px;
+  }
+
+  .profile-txt .prof-name {
+    font-size: 37px;
+    line-height: 55px;
+  }
+
+  .prof-name .span-name {
+    font-weight: 900;
+    font-size: 52px;
+  }
+
+  .excla-span {
+    font-size: 42px;
+  }
+
+  .about-shortcut {
+    font-size: 14px;
+  }
+
+  .typewrite {
+    font-size: 18px;
+  }
+
+  .sec1-icon ul li a {
+    font-size: 17px;
+  }
 }
