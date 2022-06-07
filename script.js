@@ -89,6 +89,7 @@ let darkModeText = document.querySelectorAll(".text-dmode");
 let darkModeBtn = document.querySelector(".darkMode");
 let darkModeBg = document.querySelectorAll(".bg-dmode");
 let lightModeBtn = document.querySelector(".lightMode");
+let spanName = document.querySelector(".span-name");
 darkModeBtn.addEventListener("click", function () {
   indicator.textContent = "dark";
   for (let i = 0; i < darkModeText.length; i++) {
@@ -96,8 +97,10 @@ darkModeBtn.addEventListener("click", function () {
     darkModeText[i].style.transition = "1s";
   }
   for (let i = 0; i < darkModeBg.length; i++) {
-    darkModeBg[i].style.backgroundColor = "#0E0F11";
+    darkModeBg[i].style.backgroundColor = "#191624";
   }
+  spanName.style.textShadow =
+    "-3px -3px 0 rgb(255, 255, 255), 1px -1px 0 #191624, -1px 1px 0 #191624, 1px 1px 0 rgb(224, 224, 224)";
 });
 lightModeBtn.addEventListener("click", function () {
   indicator.textContent = "light";
@@ -108,6 +111,8 @@ lightModeBtn.addEventListener("click", function () {
   for (let i = 0; i < darkModeBg.length; i++) {
     darkModeBg[i].style.backgroundColor = "white";
   }
+  spanName.style.textShadow =
+    " -3px -3px 0 #2F4858, 1px -1px 0 transparent, -1px 1px 0 transparent, 1px 1px 0 #2F4858";
 });
 
 //sub title animation
