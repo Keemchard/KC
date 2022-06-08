@@ -813,7 +813,7 @@ nav .menu ul {
     height: auto !important;
   }
   .sec3-first {
-    background-color: rebeccapurple;
+    /* background-color: rebeccapurple; */
     flex-direction: column;
   }
   .sec3-first > div {
@@ -878,7 +878,7 @@ nav .menu ul {
     height: 370px;
   }
   .section-2 {
-    background-color: saddlebrown;
+    /* background-color: saddlebrown; */
     height: 450px !important;
     margin-bottom: 150px;
   }
