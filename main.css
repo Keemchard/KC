@@ -44,6 +44,7 @@ nav {
   z-index: 2;
   /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); */
 }
+
 .menu .uil {
   display: none;
 }
@@ -161,8 +162,8 @@ nav .menu ul {
   position: absolute;
   color: #ff3c00;
   font-weight: bold;
-  font-size: 35px;
-  top: 93%;
+  font-size: 40px;
+  top: 90%;
   left: 50%;
   transform: translate(-50%, -50%);
   animation-name: arrowAnimation;
@@ -380,7 +381,7 @@ nav .menu ul {
 
 /* --------------------SECTION 2-------------------- */
 .section-2 {
-  background-color: tomato;
+  /* background-color: rgb(156, 120, 114); */
   position: relative;
   display: flex;
   align-items: center;
@@ -389,16 +390,22 @@ nav .menu ul {
 /* ----------CAROUSEL---------- */
 .md_carousel {
   position: absolute;
-  top: 50%;
+  top: 45%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 75%;
-  height: 65%;
+  width: 85%;
+  height: 560px;
   font-family: sans-serif;
   box-sizing: border-box;
   scrollbar-color: transparent transparent; /* thumb and track color */
   scrollbar-width: 0;
   margin: auto;
+
+  border-radius: 5px;
+}
+.md_carousel img {
+  border-radius: 5px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.5);
 }
 
 .md_carouselViewport {
@@ -416,8 +423,9 @@ nav .menu ul {
   position: relative;
   left: 0%;
   flex: 0 0 100%;
-  background-color: #b4aaaa;
-  background-color: rgba(180, 170, 170, 1);
+  /* background-color: #b4aaaa;
+  background-color: rgba(180, 170, 170, 1); */
+  background-color: transparent;
   padding: 10px;
   transition: left 4s ease-in-out;
   display: flex;
@@ -482,7 +490,8 @@ nav .menu ul {
   text-align: center;
   opacity: 0.5;
   cursor: pointer;
-  background-color: #333;
+  /* background-color: #333; */
+  background-color: transparent;
   background-size: 2rem 2rem;
   background-repeat: no-repeat;
   background-position: center center;
@@ -517,6 +526,26 @@ nav .menu ul {
   width: 250px;
 }
 
+.sec-btn {
+  width: 235px;
+  padding: 15px 20px;
+  font-size: 20px;
+  border-radius: 5px;
+  border: none;
+  background-color: #2f4858;
+  transition: 0.25s;
+  cursor: pointer;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  color: white;
+}
+
+.sec-btn:hover {
+  background-color: #ff3c00;
+  border: 1px solid #cad2db;
+  color: white;
+  transform: scaleX(1.1);
+}
+
 /* --------------------SECTION 3-------------------- */
 .section-3 {
   background-color: tan;
@@ -537,8 +566,8 @@ nav .menu ul {
 }
 .flip-card {
   background-color: transparent;
-  width: 370px;
-  height: 410px;
+  width: 350px;
+  height: 400px;
   perspective: 1000px;
   cursor: pointer;
 }
@@ -586,21 +615,47 @@ nav .menu ul {
   margin-top: 30px;
 }
 
-.cert-btn {
-  padding: 10px 20px;
-  width: 250px;
-}
 /* --------------------SECTION 4-------------------- */
 .section-4 {
   background-color: springgreen;
 }
 
 /* --------------------MOSA---------------------- */
-
+@media only screen and (max-width: 1324px) {
+  /* section -3 */
+  .flip-card {
+    background-color: transparent;
+    width: 300px;
+    height: 380px;
+    perspective: 1000px;
+    cursor: pointer;
+  }
+  .flip-card-front img {
+    height: 210px !important;
+  }
+}
 @media only screen and (max-width: 1134px) {
   .section-1 {
     /* background-color: #2980b9; */
   }
+
+  /* section -3 */
+  .flip-card {
+    width: 280px;
+    height: 360px;
+  }
+  .flip-card-front img {
+    height: 210px !important;
+  }
+  .card-title {
+    font-size: 14px;
+  }
+  .flip-card-back h1 {
+    font-size: 25px;
+    line-height: 28px;
+    margin-bottom: 20px;
+  }
+  /* section - 3 ends */
 
   .profile-mini-con img {
     width: 370px;
@@ -613,6 +668,12 @@ nav .menu ul {
     width: 300px;
     height: 300px;
     perspective: 1000px;
+  }
+
+  /* section 4 */
+  .md_carousel {
+    width: 98%;
+    height: 560px;
   }
 }
 
@@ -665,7 +726,8 @@ nav .menu ul {
     font-size: 50px;
   }
 
-  .about-shortcut {
+  .about-shortcut,
+  .sec-btn {
     width: 200px;
     padding: 10px 15px;
     font-size: 15px;
@@ -677,6 +739,12 @@ nav .menu ul {
 
   .sec1-icon ul li a {
     font-size: 20px;
+  }
+
+  /* section 2 */
+  .md_carousel {
+    width: 100%;
+    height: 560px;
   }
 }
 
@@ -734,6 +802,113 @@ nav .menu ul {
   .s-link {
     display: none;
   }
+
+  /* section - 3 */
+  .section-3 {
+    height: auto !important;
+  }
+  .sec3-first {
+    background-color: rebeccapurple;
+    flex-direction: column;
+  }
+  .sec3-first > div {
+    margin: 20px 0;
+  }
+  .sec3-second {
+    margin-bottom: 100px;
+  }
+  .flip-card {
+    width: 340px;
+    height: 400px;
+  }
+  .flip-card-front img {
+    height: 210px !important;
+  }
+  .card-title {
+    font-size: 14px;
+  }
+  .flip-card-back h1 {
+    font-size: 25px;
+    line-height: 28px;
+    margin-bottom: 20px;
+  }
+
+  /* section-3 ends */
+
+  /* section 2 */
+  .md_carousel {
+    width: 100%;
+    height: 480px;
+  }
+}
+
+@media only screen and (max-width: 900px) {
+  /* section 2 */
+  .md_carousel {
+    width: 100%;
+    height: 450px;
+  }
+}
+@media only screen and (max-width: 800px) {
+  .container {
+    padding: 0 10px;
+  }
+  /* section 2 */
+  .md_carousel {
+    width: 90%;
+    height: 420px;
+  }
+}
+@media only screen and (max-width: 750px) {
+  /* section 2 */
+  .md_carousel {
+    width: 90%;
+    height: 400px;
+  }
+}
+@media only screen and (max-width: 700px) {
+  /* section 2 */
+  .md_carousel {
+    width: 90%;
+    height: 370px;
+  }
+  .section-2 {
+    background-color: saddlebrown;
+    height: 450px !important;
+    margin-bottom: 150px;
+  }
+}
+@media only screen and (max-width: 650px) {
+  /* section 2 */
+  .md_carousel {
+    width: 90%;
+    height: 340px;
+  }
+}
+@media only screen and (max-width: 600px) {
+  /* section 2 */
+  .md_carousel {
+    width: 90%;
+    height: 310px;
+  }
+}
+@media only screen and (max-width: 550px) {
+  /* section 2 */
+  .md_carousel {
+    width: 100%;
+    height: 300px;
+  }
+  .md_carouselNavButton {
+    height: 5px;
+    width: 35px;
+  }
+}
+@media only screen and (max-width: 490px) {
+  /* section 2 */
+  .md_carousel {
+    width: 100%;
+    height: 280px;
+  }
 }
 
 @media only screen and (max-width: 638px) {
@@ -763,7 +938,7 @@ nav .menu ul {
 
 @media only screen and (max-width: 532px) {
   .container {
-    padding: 0 20px;
+    padding: 0 10px;
   }
   .profile-mini-con img {
     margin-top: 10px;
@@ -786,7 +961,8 @@ nav .menu ul {
     font-size: 45px;
   }
 
-  .about-shortcut {
+  .about-shortcut,
+  .sec-btn {
     font-size: 15px;
   }
 
@@ -808,20 +984,21 @@ nav .menu ul {
   }
 
   .profile-txt .prof-name {
-    font-size: 37px;
+    font-size: 35px;
     line-height: 55px;
   }
 
   .prof-name .span-name {
     font-weight: 900;
-    font-size: 52px;
+    font-size: 50px;
   }
 
   .excla-span {
-    font-size: 42px;
+    font-size: 40px;
   }
 
-  .about-shortcut {
+  .about-shortcut,
+  .sec-btn {
     font-size: 14px;
   }
 
@@ -831,5 +1008,10 @@ nav .menu ul {
 
   .sec1-icon ul li a {
     font-size: 17px;
+  }
+  /* section 2 */
+  .md_carousel {
+    width: 100%;
+    height: 250px;
   }
 }
