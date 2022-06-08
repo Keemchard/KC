@@ -37,7 +37,7 @@ a {
 
 nav {
   transition: 2s;
-  background-color: transparent;
+  background-color: white;
   padding: 10px 0;
   position: fixed;
   width: 100%;
@@ -51,7 +51,7 @@ nav {
 .main-nav {
   margin: auto;
   /* background-color: aqua; */
-  height: 64px;
+  height: 55px;
   display: flex;
   align-items: center;
   max-width: 1366px;
@@ -386,15 +386,17 @@ nav .menu ul {
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: 2s;
 }
 /* ----------CAROUSEL---------- */
 .md_carousel {
+  transition: 2s;
   position: absolute;
   top: 45%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 90%;
-  height: 580px;
+  width: 97%;
+  height: 620px;
   font-family: sans-serif;
   box-sizing: border-box;
   scrollbar-color: transparent transparent; /* thumb and track color */
@@ -527,6 +529,7 @@ nav .menu ul {
 }
 
 .sec-btn {
+  transition: 2s;
   width: 235px;
   padding: 15px 20px;
   font-size: 20px;
@@ -553,6 +556,7 @@ nav .menu ul {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  transition: 2s;
 }
 
 .sec3-first {
@@ -560,6 +564,7 @@ nav .menu ul {
   align-items: center;
   justify-content: center;
   margin-bottom: 100px;
+  transition: 2s;
 }
 .sec3-first > div {
   margin: 0 15px 0 15px;
@@ -570,9 +575,11 @@ nav .menu ul {
   height: 400px;
   perspective: 1000px;
   cursor: pointer;
+  transition: 2s;
 }
 
 .flip-card-inner {
+  transition: 2s;
   border-radius: 5px;
   position: relative;
   width: 100%;
@@ -601,6 +608,7 @@ nav .menu ul {
   background-color: #2f4858;
   color: white;
   border-radius: 5px;
+  transition: 2s;
 }
 
 .flip-card-back {
@@ -614,10 +622,12 @@ nav .menu ul {
   padding: 5px;
   border-radius: 5px;
   box-shadow: 10px 10px #2f4858;
+  transition: 2s;
 }
 
 .card-title {
   margin-top: 30px;
+  transition: 2s;
 }
 
 /* --------------------SECTION 4-------------------- */
