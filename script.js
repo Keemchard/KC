@@ -109,7 +109,7 @@ lightModeBtn.addEventListener("click", function () {
     darkModeText[i].style.transition = "1s";
   }
   for (let i = 0; i < darkModeBg.length; i++) {
-    darkModeBg[i].style.backgroundColor = "white";
+    darkModeBg[i].style.backgroundColor = "#f5f8f9"; //white
   }
   spanName.style.textShadow =
     " -3px -3px 0 #2F4858, 1px -1px 0 transparent, -1px 1px 0 transparent, 1px 1px 0 #2F4858";
