@@ -637,7 +637,7 @@ nav .menu ul {
 }
 
 /* --------------------MOSA---------------------- */
-@media only screen and (max-height: 900px) {
+@media only screen and (max-height: 490px) {
   .section-1 {
     height: auto;
   }
