@@ -389,12 +389,22 @@ nav .menu ul {
   justify-content: center;
   transition: 2s;
   /* background-color: antiquewhite; */
+  text-align: center;
+}
+.sec-heading {
+  letter-spacing: 5px;
+  position: absolute;
+  top: 20px;
+  color: #2f4858;
+  text-shadow: -2.5px -2.5px 0 #ff3c00, 1px -1px 0 transparent,
+    -1px 1px 0 transparent, 1px 1px 0 #ff3c00;
+  font-size: 40px;
 }
 /* ----------CAROUSEL---------- */
 .md_carousel {
   transition: 2s;
   position: absolute;
-  top: 45%;
+  top: 47%;
   left: 50%;
   transform: translate(-50%, -50%);
   width: 100%;
@@ -559,14 +569,26 @@ nav .menu ul {
   align-items: center;
   justify-content: center;
   transition: 2s;
+  /* background-color: red; */
+  text-align: center;
+}
+.third-head {
+  letter-spacing: 5px;
+  color: #2f4858;
+  text-shadow: -2.5px -2.5px 0 #ff3c00, 1px -1px 0 transparent,
+    -1px 1px 0 transparent, 1px 1px 0 #ff3c00;
+  font-size: 40px;
+  margin-top: 30px;
 }
 
 .sec3-first {
+  margin-top: 40px;
   display: flex;
   align-items: center;
   justify-content: center;
   margin-bottom: 100px;
   transition: 2s;
+  /* width: 100%; */
 }
 .sec3-first > div {
   margin: 0 15px 0 15px;
@@ -634,9 +656,111 @@ nav .menu ul {
 
 /* --------------------SECTION 4-------------------- */
 .section-4 {
-  background-color: springgreen;
+  /* background-color: antiquewhite; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
+.section-4 > div {
+  /* border: 1px solid black; */
+  flex: 1;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* justify-content: center; */
+  padding: 20px;
+}
+
+.section-4 .sec4-first {
+  /* background-color: gray; */
+}
+
+.sec4-first h1,
+.sec4-second h1 {
+  letter-spacing: 5px;
+  color: #2f4858;
+  text-shadow: -2.5px -2.5px 0 #ff3c00, 1px -1px 0 transparent,
+    -1px 1px 0 transparent, 1px 1px 0 #ff3c00;
+  font-size: 40px;
+  margin: 80px 0 20px 0;
+}
+
+.sec4-first form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.sec4-first input,
+textarea {
+  color: white;
+  background-color: #2f4858;
+  transition: 0.5s;
+  border: none;
+  padding: 10px;
+  margin-bottom: 8px;
+  width: 330px;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.sec4-first input:focus,
+textarea:focus {
+  transform: scaleX(1.1);
+  border: 3px solid #ff3c00;
+}
+
+.sec4-first button {
+  border: none;
+  padding: 10px;
+  margin-bottom: 7px;
+  width: 150px;
+  border-radius: 5px;
+  background-color: #2f4858;
+  color: white;
+  font-size: 17px;
+  transition: 0.25s;
+}
+.sec4-first button:hover {
+  transform: scale(1.2);
+  background-color: #ff3c00;
+  color: white;
+}
+
+.sec4-second a {
+  color: #2f4858;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.sec4-second .resume-dl p {
+  color: #ff3c00;
+  background-color: #2f4858;
+  padding: 10px 7px;
+  border-radius: 5px;
+  margin-left: 10px;
+  font-size: 15px;
+}
+
+.resume-dl {
+  transition: 0.5s;
+}
+.resume-dl:hover {
+  transform: scale(1.1);
+}
+.contact-icon {
+  margin-top: 20px;
+}
+.contact-icon p {
+  margin-left: 10px;
+  font-size: 15px;
+}
+.contact-icon a:hover {
+  font-size: 30px;
+  color: #ff3c00;
+}
 /* --------------------MOSA---------------------- */
 @media only screen and (max-height: 490px) {
   .section-1 {
@@ -870,6 +994,13 @@ nav .menu ul {
   .profile-txt {
     margin-top: 0px;
   }
+  .section-4 {
+    flex-direction: column;
+    height: auto !important;
+  }
+  .sec4-second {
+    margin-bottom: 100px;
+  }
 }
 
 @media only screen and (max-width: 900px) {
@@ -990,6 +1121,23 @@ nav .menu ul {
 @media only screen and (max-width: 532px) {
   .container {
     padding: 0 10px;
+  }
+
+  .sec-heading {
+    letter-spacing: 5px;
+    position: absolute;
+    top: 20px;
+    color: #2f4858;
+    text-shadow: -2.5px -2.5px 0 #ff3c00, 1px -1px 0 transparent,
+      -1px 1px 0 transparent, 1px 1px 0 #ff3c00;
+    font-size: 30px;
+  }
+  .third-head {
+    letter-spacing: 5px;
+    color: #2f4858;
+    text-shadow: -2.5px -2.5px 0 #ff3c00, 1px -1px 0 transparent,
+      -1px 1px 0 transparent, 1px 1px 0 #ff3c00;
+    font-size: 30px;
   }
   .profile-mini-con img {
     margin-top: 10px;
