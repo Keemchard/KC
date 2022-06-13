@@ -310,3 +310,42 @@ function Autoplay(transitionDuration, displayDuration, carouselIndex) {
 SetupCarousels(500, 5000);
 
 //scroll
+
+//ABOUT
+
+let educationbtn = document.querySelector(".edu");
+let experiencebtn = document.querySelector(".exp");
+let aboutEducation = document.querySelector(".about-education");
+let aboutExperience = document.querySelector(".about-experience");
+let eduH3 = document.querySelector(".edu-h3");
+let expH3 = document.querySelector(".exp-h3");
+
+//lol am using arrow function HAHAHA idk y they prefer this rather than the old way
+educationbtn.addEventListener("click", () => {
+  aboutEducation.style.display = "block";
+  aboutExperience.style.display = "none";
+  eduH3.style.borderBottom = "5px solid #ff3c00";
+  expH3.style.borderBottom = "none";
+  educationbtn.style.backgroundColor = "rgba(47, 72, 88, 0.4)";
+  experiencebtn.style.backgroundColor = "transparent";
+});
+experiencebtn.addEventListener("click", () => {
+  aboutExperience.style.display = "block";
+  aboutEducation.style.display = "none";
+  expH3.style.borderBottom = "5px solid #ff3c00";
+  eduH3.style.borderBottom = "none";
+  experiencebtn.style.backgroundColor = "rgba(47, 72, 88, 0.4)";
+  educationbtn.style.backgroundColor = "transparent";
+});
+
+//toggle about
+let aboutButton = document.querySelector(".about-shortcut");
+let exitAboutButton = document.querySelector(".exit-abt");
+let About = document.querySelector(".main-about");
+
+aboutButton.addEventListener("click", () => {
+  About.style.display = "block";
+});
+exitAboutButton.addEventListener("click", () => {
+  About.style.display = "none";
+});
