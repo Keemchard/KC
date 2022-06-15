@@ -1568,11 +1568,12 @@ textarea:focus {
 .actual-proj {
   padding: 15px 11px;
   /* background-color: salmon; */
+  backdrop-filter: blur(5px);
   width: 850px;
   height: 230px;
   margin-bottom: 30px;
   border-radius: 5px;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.8);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.15);
   display: flex;
   align-items: center;
 }
@@ -1649,6 +1650,6 @@ textarea:focus {
 
 @media only screen and (max-width: 470px) {
   .actual-proj {
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.8);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.15);
   }
 }
