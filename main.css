@@ -1654,3 +1654,25 @@ textarea:focus {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.15);
   }
 }
+
+/* footer */
+
+footer {
+  height: 90px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  background-color: transparent;
+  font-size: 20px;
+}
+footer span {
+  color: #ff3c00;
+}
+@media only screen and (max-width: 1005px) {
+  footer {
+    font-size: 15px;
+    height: 180px;
+  }
+}
