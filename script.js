@@ -10,11 +10,21 @@ for (let i = 0; i < navLinks.length; i++) {
         eraseActiveNavLinkDarkMode(2);
         eraseActiveNavLinkDarkMode(3);
         eraseActiveNavLinkDarkMode(4);
+        eraseActiveNavLinkDarkMode(5);
+        eraseActiveNavLinkDarkMode(6);
+        eraseActiveNavLinkDarkMode(7);
+        eraseActiveNavLinkDarkMode(8);
+        eraseActiveNavLinkDarkMode(9);
       } else if (indicator.textContent == "light") {
         eraseActiveNavLinkLightMode(1);
         eraseActiveNavLinkLightMode(2);
         eraseActiveNavLinkLightMode(3);
         eraseActiveNavLinkLightMode(4);
+        eraseActiveNavLinkLightMode(5);
+        eraseActiveNavLinkLightMode(6);
+        eraseActiveNavLinkLightMode(7);
+        eraseActiveNavLinkLightMode(8);
+        eraseActiveNavLinkLightMode(9);
       }
     } else if (i == 1) {
       addActiveNavLinkStyle(1);
@@ -23,11 +33,21 @@ for (let i = 0; i < navLinks.length; i++) {
         eraseActiveNavLinkDarkMode(2);
         eraseActiveNavLinkDarkMode(3);
         eraseActiveNavLinkDarkMode(4);
+        eraseActiveNavLinkDarkMode(5);
+        eraseActiveNavLinkDarkMode(6);
+        eraseActiveNavLinkDarkMode(7);
+        eraseActiveNavLinkDarkMode(8);
+        eraseActiveNavLinkDarkMode(9);
       } else if (indicator.textContent == "light") {
         eraseActiveNavLinkLightMode(0);
         eraseActiveNavLinkLightMode(2);
         eraseActiveNavLinkLightMode(3);
         eraseActiveNavLinkLightMode(4);
+        eraseActiveNavLinkLightMode(5);
+        eraseActiveNavLinkLightMode(6);
+        eraseActiveNavLinkLightMode(7);
+        eraseActiveNavLinkLightMode(8);
+        eraseActiveNavLinkLightMode(9);
       }
     } else if (i == 2) {
       addActiveNavLinkStyle(2);
@@ -36,11 +56,21 @@ for (let i = 0; i < navLinks.length; i++) {
         eraseActiveNavLinkDarkMode(0);
         eraseActiveNavLinkDarkMode(3);
         eraseActiveNavLinkDarkMode(4);
+        eraseActiveNavLinkDarkMode(5);
+        eraseActiveNavLinkDarkMode(6);
+        eraseActiveNavLinkDarkMode(7);
+        eraseActiveNavLinkDarkMode(8);
+        eraseActiveNavLinkDarkMode(9);
       } else if (indicator.textContent == "light") {
         eraseActiveNavLinkLightMode(1);
         eraseActiveNavLinkLightMode(0);
         eraseActiveNavLinkLightMode(3);
         eraseActiveNavLinkLightMode(4);
+        eraseActiveNavLinkLightMode(5);
+        eraseActiveNavLinkLightMode(6);
+        eraseActiveNavLinkLightMode(7);
+        eraseActiveNavLinkLightMode(8);
+        eraseActiveNavLinkLightMode(9);
       }
     } else if (i == 3) {
       addActiveNavLinkStyle(3);
@@ -49,11 +79,21 @@ for (let i = 0; i < navLinks.length; i++) {
         eraseActiveNavLinkDarkMode(2);
         eraseActiveNavLinkDarkMode(0);
         eraseActiveNavLinkDarkMode(4);
+        eraseActiveNavLinkDarkMode(5);
+        eraseActiveNavLinkDarkMode(6);
+        eraseActiveNavLinkDarkMode(7);
+        eraseActiveNavLinkDarkMode(8);
+        eraseActiveNavLinkDarkMode(9);
       } else if (indicator.textContent == "light") {
         eraseActiveNavLinkLightMode(1);
         eraseActiveNavLinkLightMode(2);
         eraseActiveNavLinkLightMode(0);
         eraseActiveNavLinkLightMode(4);
+        eraseActiveNavLinkLightMode(5);
+        eraseActiveNavLinkLightMode(6);
+        eraseActiveNavLinkLightMode(7);
+        eraseActiveNavLinkLightMode(8);
+        eraseActiveNavLinkLightMode(9);
       }
     } else if (i == 4) {
       addActiveNavLinkStyle(4);
@@ -62,11 +102,136 @@ for (let i = 0; i < navLinks.length; i++) {
         eraseActiveNavLinkDarkMode(2);
         eraseActiveNavLinkDarkMode(3);
         eraseActiveNavLinkDarkMode(0);
+        eraseActiveNavLinkDarkMode(5);
+        eraseActiveNavLinkDarkMode(6);
+        eraseActiveNavLinkDarkMode(7);
+        eraseActiveNavLinkDarkMode(8);
+        eraseActiveNavLinkDarkMode(9);
       } else if (indicator.textContent == "light") {
         eraseActiveNavLinkLightMode(1);
         eraseActiveNavLinkLightMode(2);
         eraseActiveNavLinkLightMode(3);
         eraseActiveNavLinkLightMode(0);
+        eraseActiveNavLinkLightMode(5);
+        eraseActiveNavLinkLightMode(6);
+        eraseActiveNavLinkLightMode(7);
+        eraseActiveNavLinkLightMode(8);
+        eraseActiveNavLinkLightMode(9);
+      }
+    } else if (i == 5) {
+      addActiveNavLinkStyle(5);
+      if (indicator.textContent == "dark") {
+        eraseActiveNavLinkDarkMode(1);
+        eraseActiveNavLinkDarkMode(2);
+        eraseActiveNavLinkDarkMode(3);
+        eraseActiveNavLinkDarkMode(0);
+        eraseActiveNavLinkDarkMode(4);
+        eraseActiveNavLinkDarkMode(6);
+        eraseActiveNavLinkDarkMode(7);
+        eraseActiveNavLinkDarkMode(8);
+        eraseActiveNavLinkDarkMode(9);
+      } else if (indicator.textContent == "light") {
+        eraseActiveNavLinkLightMode(1);
+        eraseActiveNavLinkLightMode(2);
+        eraseActiveNavLinkLightMode(3);
+        eraseActiveNavLinkLightMode(0);
+        eraseActiveNavLinkLightMode(4);
+        eraseActiveNavLinkLightMode(6);
+        eraseActiveNavLinkLightMode(7);
+        eraseActiveNavLinkLightMode(8);
+        eraseActiveNavLinkLightMode(9);
+      }
+    } else if (i == 6) {
+      addActiveNavLinkStyle(6);
+      if (indicator.textContent == "dark") {
+        eraseActiveNavLinkDarkMode(1);
+        eraseActiveNavLinkDarkMode(2);
+        eraseActiveNavLinkDarkMode(3);
+        eraseActiveNavLinkDarkMode(0);
+        eraseActiveNavLinkDarkMode(5);
+        eraseActiveNavLinkDarkMode(4);
+        eraseActiveNavLinkDarkMode(7);
+        eraseActiveNavLinkDarkMode(8);
+        eraseActiveNavLinkDarkMode(9);
+      } else if (indicator.textContent == "light") {
+        eraseActiveNavLinkLightMode(1);
+        eraseActiveNavLinkLightMode(2);
+        eraseActiveNavLinkLightMode(3);
+        eraseActiveNavLinkLightMode(0);
+        eraseActiveNavLinkLightMode(5);
+        eraseActiveNavLinkLightMode(4);
+        eraseActiveNavLinkLightMode(7);
+        eraseActiveNavLinkLightMode(8);
+        eraseActiveNavLinkLightMode(9);
+      }
+    } else if (i == 7) {
+      addActiveNavLinkStyle(7);
+      if (indicator.textContent == "dark") {
+        eraseActiveNavLinkDarkMode(1);
+        eraseActiveNavLinkDarkMode(2);
+        eraseActiveNavLinkDarkMode(3);
+        eraseActiveNavLinkDarkMode(0);
+        eraseActiveNavLinkDarkMode(5);
+        eraseActiveNavLinkDarkMode(6);
+        eraseActiveNavLinkDarkMode(4);
+        eraseActiveNavLinkDarkMode(8);
+        eraseActiveNavLinkDarkMode(9);
+      } else if (indicator.textContent == "light") {
+        eraseActiveNavLinkLightMode(1);
+        eraseActiveNavLinkLightMode(2);
+        eraseActiveNavLinkLightMode(3);
+        eraseActiveNavLinkLightMode(0);
+        eraseActiveNavLinkLightMode(5);
+        eraseActiveNavLinkLightMode(6);
+        eraseActiveNavLinkLightMode(4);
+        eraseActiveNavLinkLightMode(8);
+        eraseActiveNavLinkLightMode(9);
+      }
+    } else if (i == 8) {
+      addActiveNavLinkStyle(8);
+      if (indicator.textContent == "dark") {
+        eraseActiveNavLinkDarkMode(1);
+        eraseActiveNavLinkDarkMode(2);
+        eraseActiveNavLinkDarkMode(3);
+        eraseActiveNavLinkDarkMode(0);
+        eraseActiveNavLinkDarkMode(5);
+        eraseActiveNavLinkDarkMode(6);
+        eraseActiveNavLinkDarkMode(7);
+        eraseActiveNavLinkDarkMode(4);
+        eraseActiveNavLinkDarkMode(9);
+      } else if (indicator.textContent == "light") {
+        eraseActiveNavLinkLightMode(1);
+        eraseActiveNavLinkLightMode(2);
+        eraseActiveNavLinkLightMode(3);
+        eraseActiveNavLinkLightMode(0);
+        eraseActiveNavLinkLightMode(5);
+        eraseActiveNavLinkLightMode(6);
+        eraseActiveNavLinkLightMode(7);
+        eraseActiveNavLinkLightMode(4);
+        eraseActiveNavLinkLightMode(9);
+      }
+    } else if (i == 9) {
+      addActiveNavLinkStyle(9);
+      if (indicator.textContent == "dark") {
+        eraseActiveNavLinkDarkMode(1);
+        eraseActiveNavLinkDarkMode(2);
+        eraseActiveNavLinkDarkMode(3);
+        eraseActiveNavLinkDarkMode(0);
+        eraseActiveNavLinkDarkMode(5);
+        eraseActiveNavLinkDarkMode(6);
+        eraseActiveNavLinkDarkMode(7);
+        eraseActiveNavLinkDarkMode(8);
+        eraseActiveNavLinkDarkMode(4);
+      } else if (indicator.textContent == "light") {
+        eraseActiveNavLinkLightMode(1);
+        eraseActiveNavLinkLightMode(2);
+        eraseActiveNavLinkLightMode(3);
+        eraseActiveNavLinkLightMode(0);
+        eraseActiveNavLinkLightMode(5);
+        eraseActiveNavLinkLightMode(6);
+        eraseActiveNavLinkLightMode(7);
+        eraseActiveNavLinkLightMode(8);
+        eraseActiveNavLinkLightMode(4);
       }
     }
   });
