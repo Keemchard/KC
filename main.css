@@ -1663,8 +1663,9 @@ footer {
   align-items: center;
   justify-content: center;
   font-weight: bold;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); */
   background-color: transparent;
+  backdrop-filter: blur(5px);
   font-size: 20px;
 }
 footer span {
