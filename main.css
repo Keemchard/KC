@@ -128,7 +128,7 @@ nav .menu ul {
 .dropdown-content {
   display: none;
   position: absolute;
-  background-color: transparent;
+  background-color: #f5f8f9;
   padding: 20px 10px;
   min-width: 160px;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
@@ -927,7 +927,7 @@ textarea:focus {
     align-items: center;
   }
   .dropdown-content {
-    top: -190px;
+    top: -170px;
     right: -10px;
   }
   .dropbtn {
