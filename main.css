@@ -1595,6 +1595,18 @@ textarea:focus {
   width: 510px;
   padding: 10px;
 }
+.ap-description p {
+  font-size: 15px;
+}
+.actual-proj p i {
+  font-size: 20px;
+  color: #ff3c00;
+  transition: 0.25s;
+  margin-right: 5px;
+}
+.actual-proj p i:hover {
+  font-size: 25px;
+}
 
 /* loop images */
 
