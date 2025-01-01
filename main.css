@@ -1255,7 +1255,7 @@ textarea:focus {
   margin: auto;
   position: relative;
   padding: 10px;
-  margin-bottom: 100px;
+  margin-bottom: 70rem;
   margin-top: 30px;
   display: flex;
   flex-direction: column;
@@ -1398,6 +1398,38 @@ textarea:focus {
   top: 0px;
   right: 50px;
 }
+.internship .circle {
+  top: 520px;
+}
+.internship .circle .shs-content {
+  position: absolute;
+  top: 0px;
+  right: 50px;
+}
+.first-internship .circle {
+  top: 350px;
+}
+.first-internship .circle .shs-content {
+  position: absolute;
+  top: 0px;
+  left: 50px;
+}
+.partime .circle {
+  top: 700px;
+}
+.partime .circle .shs-content {
+  position: absolute;
+  top: 0px;
+  left: 50px;
+}
+.full-time .circle {
+  top: 860px;
+}
+.full-time .circle .shs-content {
+  position: absolute;
+  top: 0px;
+  right: 50px;
+}
 
 .college .circle {
   bottom: 0px;
@@ -1431,7 +1463,7 @@ textarea:focus {
 }
 
 .abt-c2-exp .line {
-  height: 370px;
+  height: 870px;
 }
 
 .abt-c2-exp .jhs .circle {
@@ -1492,6 +1524,18 @@ textarea:focus {
 
   .shs .circle .shs-content {
     right: 35px;
+  }
+  .internship .circle .shs-content {
+    right: 35px;
+  }
+  .full-time .circle .shs-content {
+    right: 35px;
+  }
+  .first-internship .circle .shs-content {
+    left: 35px;
+  }
+  .partime .circle .shs-content {
+    left: 35px;
   }
 
   .college .circle .college-content {
