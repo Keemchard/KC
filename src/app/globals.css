@@ -1,0 +1,129 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply font-poppins antialiased;
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    @apply bg-transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply bg-primary/30 rounded-full;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-primary/60;
+  }
+}
+
+@layer components {
+  .section-heading {
+    @apply text-3xl md:text-4xl font-bold tracking-wider text-dark dark:text-white;
+  }
+
+  .section-heading-accent {
+    text-shadow: -2.5px -2.5px 0 #ff3c00, 1px -1px 0 transparent,
+      -1px 1px 0 transparent, 1px 1px 0 #ff3c00;
+  }
+
+  .btn-primary {
+    @apply bg-primary text-white font-semibold px-7 py-3 rounded-full shadow-lg
+           hover:shadow-primary/30 hover:shadow-xl hover:-translate-y-0.5
+           transition-all duration-300 active:scale-95 inline-flex items-center gap-2;
+  }
+
+  .section-label {
+    @apply text-xs font-bold tracking-[0.2em] uppercase text-primary mb-2 inline-block;
+  }
+
+  .glass {
+    @apply bg-white/80 dark:bg-dark-bg/80 backdrop-blur-xl;
+  }
+
+  .card {
+    @apply bg-white dark:bg-dark-bg/60 rounded-2xl shadow-lg
+           border border-gray-100 dark:border-white/5
+           hover:shadow-xl transition-all duration-300;
+  }
+}
+
+.typewriter-cursor::after {
+  content: "|";
+  animation: blink 1s step-end infinite;
+  color: #ff3c00;
+  font-weight: 100;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    transform: translateX(-30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    transform: translateX(30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.animate-slide-left {
+  animation: slideInLeft 0.6s ease-out forwards;
+}
+
+.animate-slide-right {
+  animation: slideInRight 0.6s ease-out forwards;
+}
+
+.flip-card {
+  perspective: 1000px;
+}
+.flip-card-inner {
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+}
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+.flip-card-front,
+.flip-card-back {
+  backface-visibility: hidden;
+}
+.flip-card-back {
+  transform: rotateY(180deg);
+}
+
+.timeline-line {
+  @apply absolute left-1/2 -translate-x-1/2 w-0.5 bg-dark/20 dark:bg-white/20;
+}
+
+.timeline-dot {
+  @apply absolute left-1/2 -translate-x-1/2 w-4 h-4 rounded-full bg-primary
+         border-2 border-white dark:border-dark-bg shadow-md z-10;
+}
