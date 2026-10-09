@@ -193,11 +193,11 @@ export default function AboutPage() {
               <div className="shrink-0">
                 <div className="w-48 h-48 rounded-full overflow-hidden ring-4 ring-primary/30">
                   <Image
-                    src="/images/personal/profileImg.png"
+                    src="/images/personal/formal-personal-picture.jpg"
                     alt="Keemchard Tamio"
                     width={192}
                     height={192}
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-cover object-[center_20%]"
                     priority
                   />
                 </div>

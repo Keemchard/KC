@@ -6,10 +6,10 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        primary: "#ff3c00",
-        dark: "#2f4858",
-        "dark-bg": "#191624",
-        "light-bg": "#f5f8f9",
+        primary: "rgb(var(--primary) / <alpha-value>)",
+        dark: "rgb(var(--dark) / <alpha-value>)",
+        "dark-bg": "rgb(var(--dark-bg) / <alpha-value>)",
+        "light-bg": "rgb(var(--light-bg) / <alpha-value>)",
       },
       fontFamily: {
         poppins: ["Poppins", "sans-serif"],

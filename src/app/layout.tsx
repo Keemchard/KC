@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import Navbar from "@/components/Navbar";
+import TutorialModal from "@/components/TutorialModal";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -15,6 +16,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className="bg-light-bg dark:bg-dark-bg transition-colors duration-300">
         <ThemeProvider>
           <Navbar />
+          <TutorialModal />
           {children}
         </ThemeProvider>
       </body>

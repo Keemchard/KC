@@ -66,13 +66,10 @@ export default function Hero() {
             <span className="section-label">Hello, World! 👋</span>
 
             <h1 className="mt-2 leading-tight">
-              <span className="block text-3xl sm:text-4xl md:text-5xl font-bold text-dark dark:text-white">
+              <span className="hero-greeting block text-3xl sm:text-4xl md:text-5xl font-bold text-dark dark:text-white">
                 Hi, I&apos;m
               </span>
-              <span
-                className="block text-5xl sm:text-6xl md:text-8xl font-black text-primary"
-                style={{ filter: "drop-shadow(0 4px 16px rgba(255,60,0,0.25))" }}
-              >
+              <span className="hero-name hero-name-glow block text-5xl sm:text-6xl md:text-8xl font-black text-primary">
                 KEEMCHARD
               </span>
             </h1>
@@ -88,7 +85,7 @@ export default function Hero() {
               </a>
               <Link
                 href="/about"
-                className="px-6 sm:px-7 py-3 rounded-full font-semibold text-sm sm:text-base
+                className="hero-outline-btn px-6 sm:px-7 py-3 rounded-full font-semibold text-sm sm:text-base
                            border-2 border-primary/30 dark:border-primary/40
                            text-dark dark:text-white/80
                            hover:border-primary transition-all duration-300
@@ -106,7 +103,7 @@ export default function Hero() {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={label}
-                    className="inline-flex items-center justify-center w-10 h-10 rounded-full
+                    className="social-icon inline-flex items-center justify-center w-10 h-10 rounded-full
                                bg-dark/5 dark:bg-white/5 text-dark dark:text-white
                                hover:bg-primary hover:text-white transition-all duration-300"
                   >
@@ -125,11 +122,11 @@ export default function Hero() {
                 <div className="flip-card-inner relative w-full h-full">
                   <div className="flip-card-front absolute inset-0">
                     <Image
-                      src="/images/personal/profileImg.png"
+                      src="/images/personal/formal-personal-picture.jpg"
                       alt="Keemchard Tamio"
                       width={400}
                       height={400}
-                      className="w-full h-full object-cover"
+                      className="w-full h-full object-cover object-[center_20%]"
                       priority
                     />
                   </div>
