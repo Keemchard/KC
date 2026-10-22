@@ -1,5 +1,7 @@
 "use client";
 
+const TUTORIAL_ENABLED = false;
+
 import { useState, useEffect } from "react";
 import { useTheme, type Theme } from "./ThemeProvider";
 import { Moon, Sun, Leaf, Globe, X, ChevronRight, ChevronLeft, Briefcase, User2 } from "lucide-react";
@@ -28,6 +30,7 @@ export default function TutorialModal() {
   const { setTheme }          = useTheme();
 
   useEffect(() => {
+    if (!TUTORIAL_ENABLED) return;
     if (!localStorage.getItem("tutorial-seen")) {
       const t = setTimeout(() => setVisible(true), 500);
       return () => clearTimeout(t);
