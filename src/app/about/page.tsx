@@ -76,7 +76,7 @@ const experience = [
     title: "Web Developer",
     place: "Asticom - Acquiro",
     date: "May 2026 – Present",
-    type: "work",
+    type: "contract",
     current: true,
   },
 ];
@@ -86,12 +86,15 @@ const typeBadge: Record<string, string> = {
   internship:
     "bg-yellow-100 text-yellow-700 dark:bg-yellow-900/40 dark:text-yellow-300",
   work: "bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-300",
+  contract:
+    "bg-purple-100 text-purple-700 dark:bg-purple-900/40 dark:text-purple-300",
 };
 
 const typeLabel: Record<string, string> = {
   training: "Training",
   internship: "Internship",
   work: "Full-time",
+  contract: "Contractual",
 };
 
 const skills = [
