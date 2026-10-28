@@ -64,13 +64,13 @@ const experience = [
     title: "Part-Time Software Engineer",
     place: "Scrambled Eggs Software Inc. (Booky)",
     date: "Sep 2022 – Apr 2023",
-    type: "work",
+    type: "partTime",
   },
   {
     title: "Full-Time Software Engineer",
     place: "Scrambled Eggs Software Inc. (Booky)",
     date: "Apr 2023 – April 2026",
-    type: "work",
+    type: "fullTime",
   },
   {
     title: "Web Developer",
@@ -86,6 +86,10 @@ const typeBadge: Record<string, string> = {
   internship:
     "bg-yellow-100 text-yellow-700 dark:bg-yellow-900/40 dark:text-yellow-300",
   work: "bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-300",
+  partTime:
+    "bg-orange-100 text-orange-700 dark:bg-orange-900/40 dark:text-orange-300",
+  fullTime:
+    "bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-300",
   contract:
     "bg-purple-100 text-purple-700 dark:bg-purple-900/40 dark:text-purple-300",
 };
@@ -93,7 +97,8 @@ const typeBadge: Record<string, string> = {
 const typeLabel: Record<string, string> = {
   training: "Training",
   internship: "Internship",
-  work: "Full-time",
+  fullTime: "Full-time",
+  partTime: "Part-time",
   contract: "Contractual",
 };
 

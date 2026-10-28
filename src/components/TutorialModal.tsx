@@ -1,10 +1,9 @@
 "use client";
 
-const TUTORIAL_ENABLED = false;
-
 import { useState, useEffect } from "react";
 import { useTheme, type Theme } from "./ThemeProvider";
 import { Moon, Sun, Leaf, Globe, X, ChevronRight, ChevronLeft, Briefcase, User2 } from "lucide-react";
+import { TUTORIAL_ENABLED } from "@/lib/featureFlags";
 
 const THEMES: {
   value: Theme;

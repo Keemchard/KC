@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { useTheme, type Theme } from "./ThemeProvider";
 import { User, FolderOpen, Award, Paperclip, MessageSquare, Sun, Moon, Leaf, Globe } from "lucide-react";
 import Link from "next/link";
+import { SHOW_WORK_THEME } from "@/lib/featureFlags";
 
 const navItems = [
   { label: "About",    href: "/#hero",         section: "hero",         icon: User },
@@ -111,8 +112,12 @@ export default function Navbar() {
                     border border-gray-100 dark:border-white/10
                     shadow-2xl dark:shadow-black/60 pb-2">
       <ThemeGroup label="Personal" options={personalThemes} />
-      <div className="mx-4 my-2 border-t border-gray-100 dark:border-white/8" />
-      <ThemeGroup label="Work" options={workThemes} />
+      {SHOW_WORK_THEME && (
+        <>
+          <div className="mx-4 my-2 border-t border-gray-100 dark:border-white/8" />
+          <ThemeGroup label="Work" options={workThemes} />
+        </>
+      )}
     </div>
   );
 
