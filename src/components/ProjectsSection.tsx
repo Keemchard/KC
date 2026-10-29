@@ -1,13 +1,15 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { ChevronLeft, ChevronRight, ArrowRight } from "lucide-react";
 import { useTheme } from "./ThemeProvider";
+import { motion, useMotionValue, useAnimation, type PanInfo } from "motion/react";
 
 // ─── Personal Projects ────────────────────────────────────────────────────────
 const personalSlides = [
+  { src: "/images/hired-log/dashboard.png",              alt: "hired.log" },
   { src: "/images/restoflash/front.png",                alt: "Resto Flash" },
   { src: "/images/floodwatch/post.png",                 alt: "FloodWatch" },
   { src: "/images/zhitshoe/zhitshoeForportfolio.png",   alt: "ZhitShoe" },
@@ -83,7 +85,118 @@ const globeProjects = [
   },
 ];
 
-// ─── Component ────────────────────────────────────────────────────────────────
+// ─── Carousel ────────────────────────────────────────────────────────────────
+function Carousel({
+  slides,
+  current,
+  setCurrent,
+  paused,
+  setPaused,
+  next,
+  prev,
+}: {
+  slides: typeof personalSlides;
+  current: number;
+  setCurrent: (i: number) => void;
+  paused: boolean;
+  setPaused: (v: boolean) => void;
+  next: () => void;
+  prev: () => void;
+}) {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const x = useMotionValue(0);
+  const controls = useAnimation();
+
+  const goTo = useCallback(
+    (index: number) => {
+      const width = containerRef.current?.offsetWidth ?? 0;
+      controls.start({ x: -index * width, transition: { type: "spring", stiffness: 300, damping: 30 } });
+      setCurrent(index);
+    },
+    [controls, setCurrent]
+  );
+
+  useEffect(() => {
+    const width = containerRef.current?.offsetWidth ?? 0;
+    controls.start({ x: -current * width, transition: { type: "spring", stiffness: 300, damping: 30 } });
+  }, [current, controls]);
+
+  function onDragEnd(_: never, info: PanInfo) {
+    const threshold = 50;
+    if (info.offset.x < -threshold) next();
+    else if (info.offset.x > threshold) prev();
+    else goTo(current);
+  }
+
+  return (
+    <div
+      ref={containerRef}
+      className="relative w-full max-w-4xl mx-auto aspect-video rounded-3xl overflow-hidden shadow-2xl group"
+      onMouseEnter={() => setPaused(true)}
+      onMouseLeave={() => setPaused(false)}
+    >
+      <motion.div
+        className="flex h-full cursor-grab active:cursor-grabbing"
+        style={{ x }}
+        animate={controls}
+        drag="x"
+        dragConstraints={{ left: -(slides.length - 1) * (containerRef.current?.offsetWidth ?? 800), right: 0 }}
+        dragElastic={0.1}
+        onDragEnd={onDragEnd}
+      >
+        {slides.map((slide) => (
+          <div
+            key={slide.src}
+            className="min-w-full h-full flex items-center justify-center bg-dark/5 dark:bg-white/5 p-4 select-none"
+          >
+            <Image
+              src={slide.src}
+              alt={slide.alt}
+              width={900}
+              height={600}
+              draggable={false}
+              className="max-w-full max-h-full object-contain rounded-lg shadow-lg pointer-events-none"
+            />
+          </div>
+        ))}
+      </motion.div>
+
+      <button
+        onClick={prev}
+        className="absolute left-3 top-1/2 -translate-y-1/2 p-2.5 rounded-full
+                   bg-black/30 text-white hover:bg-primary transition-all
+                   opacity-0 group-hover:opacity-100"
+        aria-label="Previous"
+      >
+        <ChevronLeft size={22} />
+      </button>
+      <button
+        onClick={next}
+        className="absolute right-3 top-1/2 -translate-y-1/2 p-2.5 rounded-full
+                   bg-black/30 text-white hover:bg-primary transition-all
+                   opacity-0 group-hover:opacity-100"
+        aria-label="Next"
+      >
+        <ChevronRight size={22} />
+      </button>
+
+      <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
+        {slides.map((_, i) => (
+          <button
+            key={i}
+            onClick={() => goTo(i)}
+            className={`h-2 rounded-full transition-all duration-300 ${
+              i === current ? "w-8 bg-primary" : "w-2 bg-white/50 hover:bg-white/80"
+            }`}
+            aria-label={`Slide ${i + 1}`}
+          />
+        ))}
+      </div>
+    </div>
+  );
+}
+
+// ─── Main Component ───────────────────────────────────────────────────────────
 export default function ProjectsSection() {
   const { theme, setTheme } = useTheme();
   const [current, setCurrent] = useState(0);
@@ -192,74 +305,25 @@ export default function ProjectsSection() {
           </div>
         )}
 
-        {/* ── Personal Projects Slideshow ── */}
+        {/* ── Personal Projects Carousel ── */}
         {!isGlobe && (
-          <>
-            <div
-              className="relative w-full max-w-4xl mx-auto aspect-video rounded-3xl overflow-hidden shadow-2xl group"
-              onMouseEnter={() => setPaused(true)}
-              onMouseLeave={() => setPaused(false)}
-            >
-              <div
-                className="flex h-full transition-transform duration-700 ease-in-out"
-                style={{ transform: `translateX(-${current * 100}%)` }}
-              >
-                {personalSlides.map((slide) => (
-                  <div
-                    key={slide.src}
-                    className="min-w-full h-full flex items-center justify-center bg-dark/5 dark:bg-white/5 p-4"
-                  >
-                    <Image
-                      src={slide.src}
-                      alt={slide.alt}
-                      width={900}
-                      height={600}
-                      className="max-w-full max-h-full object-contain rounded-lg shadow-lg"
-                    />
-                  </div>
-                ))}
-              </div>
-
-              <button
-                onClick={prev}
-                className="absolute left-3 top-1/2 -translate-y-1/2 p-2.5 rounded-full
-                           bg-black/30 text-white hover:bg-primary transition-all
-                           opacity-0 group-hover:opacity-100"
-                aria-label="Previous"
-              >
-                <ChevronLeft size={22} />
-              </button>
-              <button
-                onClick={next}
-                className="absolute right-3 top-1/2 -translate-y-1/2 p-2.5 rounded-full
-                           bg-black/30 text-white hover:bg-primary transition-all
-                           opacity-0 group-hover:opacity-100"
-                aria-label="Next"
-              >
-                <ChevronRight size={22} />
-              </button>
-
-              <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
-                {personalSlides.map((_, i) => (
-                  <button
-                    key={i}
-                    onClick={() => setCurrent(i)}
-                    className={`h-2 rounded-full transition-all duration-300 ${
-                      i === current ? "w-8 bg-primary" : "w-2 bg-white/50 hover:bg-white/80"
-                    }`}
-                    aria-label={`Slide ${i + 1}`}
-                  />
-                ))}
-              </div>
-            </div>
-
-            <div className="text-center mt-7">
-              <Link href="/projects" className="btn-primary">
-                See All Projects
-                <ArrowRight size={16} />
-              </Link>
-            </div>
-          </>
+          <Carousel
+            slides={personalSlides}
+            current={current}
+            setCurrent={setCurrent}
+            paused={paused}
+            setPaused={setPaused}
+            next={next}
+            prev={prev}
+          />
+        )}
+        {!isGlobe && (
+          <div className="text-center mt-7">
+            <Link href="/projects" className="btn-primary">
+              See All Projects
+              <ArrowRight size={16} />
+            </Link>
+          </div>
         )}
       </div>
     </section>

@@ -13,9 +13,38 @@ interface Project {
   tags: string[];
   github?: string;
   live?: string;
+  featured?: boolean;
 }
 
 const projects: Project[] = [
+  {
+    title: "hired.log",
+    description:
+      "A full-stack job application tracker built to document and streamline the job hunt. Features AI-powered auto-fill that extracts company, role, location, and salary from raw job description text — no manual entry needed. Also includes an AI Cover Letter generator tailored per application, a Resume Match scorer that compares your resume against a JD, and an AI Interview Prep mode with categorized practice questions and live feedback. Backed by a Kanban board, analytics dashboard, and Google Auth.",
+    images: [
+      "/images/hired-log/dashboard.png",
+      "/images/hired-log/new-application.png",
+      "/images/hired-log/kanban.png",
+      "/images/hired-log/analytics.png",
+      "/images/hired-log/cover-letters.png",
+      "/images/hired-log/resume-match.png",
+      "/images/hired-log/interview-prep.png",
+      "/images/hired-log/interview-session.png",
+      "/images/hired-log/login.png",
+    ],
+    tags: [
+      "Next.js",
+      "TypeScript",
+      "Tailwind CSS",
+      "Firebase",
+      "Claude AI",
+      "Vercel",
+      "Kanban",
+      "Analytics",
+    ],
+    live: "https://hired-log.vercel.app",
+    featured: true,
+  },
   {
     title: "Resto Flash",
     description:
@@ -167,8 +196,14 @@ export default function ProjectsPage() {
 
                 <div className="p-6 flex flex-col flex-1">
                   <div className="flex items-start justify-between gap-4 mb-3">
-                    <h2 className="text-lg font-bold text-dark dark:text-white">
+                    <h2 className="flex items-center gap-2 text-lg font-bold text-dark dark:text-white">
                       {project.title}
+                      {project.featured && (
+                        <span className="text-[10px] font-bold px-2 py-0.5 rounded-full
+                                         bg-primary/10 text-primary border border-primary/20 tracking-wide">
+                          LATEST
+                        </span>
+                      )}
                     </h2>
                     <div className="flex gap-2 shrink-0">
                       {project.github && (
