@@ -33,18 +33,12 @@ export default function Navbar() {
     const update = () => {
       setScrolled(window.scrollY > 20);
 
-      const trigger = window.innerHeight * 0.3;
+      const midpoint = window.innerHeight * 0.5;
+      const sections = Array.from(document.querySelectorAll<HTMLElement>("section[id]"));
       let best = "";
-      let bestDist = Infinity;
-
-      document.querySelectorAll<HTMLElement>("section[id]").forEach((sec) => {
-        const top = sec.getBoundingClientRect().top;
-        const dist = Math.abs(top - trigger);
-        if (top <= trigger + 10 && dist < bestDist) {
-          bestDist = dist;
-          best = sec.id;
-        }
-      });
+      for (const sec of sections) {
+        if (sec.getBoundingClientRect().top <= midpoint) best = sec.id;
+      }
 
       if (best) setActive(best);
     };
@@ -148,6 +142,7 @@ export default function Navbar() {
                     href={item.href}
                     target={item.external ? "_blank" : undefined}
                     rel={item.external ? "noopener noreferrer" : undefined}
+                    onClick={() => { if (item.section) setActive(item.section); }}
                     className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200
                       ${isActive
                         ? "text-primary bg-primary/10"
@@ -196,6 +191,7 @@ export default function Navbar() {
                   href={item.href}
                   target={item.external ? "_blank" : undefined}
                   rel={item.external ? "noopener noreferrer" : undefined}
+                  onClick={() => { if (item.section) setActive(item.section); }}
                   className={`flex flex-col items-center gap-0.5 px-2 py-1.5 rounded-xl
                               transition-all duration-200 min-w-[52px]
                               ${isActive
