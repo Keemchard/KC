@@ -30,10 +30,12 @@ export default function Hero() {
           src="/images/personal/new-personal-img.png"
           alt="Keemchard Tamio"
           fill
-          className="object-cover object-[center_30%]"
+          className="object-cover object-[center_30%] saturate-[0.88] contrast-[0.96] brightness-[1.02]"
           priority
           sizes="55vw"
         />
+        {/* Film grain overlay */}
+        <div className="absolute inset-0 photo-grain opacity-[0.035] mix-blend-overlay pointer-events-none" aria-hidden="true" />
         {/* Left fade into background */}
         <div
           className="absolute inset-y-0 left-0 w-40 bg-gradient-to-r from-dark-bg to-transparent"
@@ -47,10 +49,11 @@ export default function Hero() {
           src="/images/personal/new-personal-img.png"
           alt="Keemchard Tamio"
           fill
-          className="object-cover object-[65%_top]"
+          className="object-cover object-[65%_top] saturate-[0.88] contrast-[0.96] brightness-[1.02]"
           priority
           sizes="100vw"
         />
+        <div className="absolute inset-0 photo-grain opacity-[0.035] mix-blend-overlay pointer-events-none" aria-hidden="true" />
         <div
           className="absolute inset-0 bg-gradient-to-t from-dark-bg via-dark-bg/80 to-dark-bg/40"
           aria-hidden="true"
