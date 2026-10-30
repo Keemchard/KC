@@ -2,15 +2,44 @@
 
 import { useEffect, useState } from "react";
 import { useTheme } from "./ThemeProvider";
-import { User, FolderOpen, Award, Paperclip, MessageSquare, Sun, Moon } from "lucide-react";
+import {
+  User,
+  FolderOpen,
+  Award,
+  Paperclip,
+  MessageSquare,
+  Sun,
+  Moon,
+} from "lucide-react";
 import Link from "next/link";
 
 const navItems = [
-  { label: "About",    href: "/#hero",         section: "hero",         icon: User },
-  { label: "Projects", href: "/#projects",     section: "projects",     icon: FolderOpen },
-  { label: "Certs",    href: "/#certificates", section: "certificates", icon: Award },
-  { label: "Resume",   href: "/resume/RESUME - KEEMCHARD TAMIO.pdf", section: "", icon: Paperclip, external: true },
-  { label: "Contact",  href: "/#contact",      section: "contact",      icon: MessageSquare },
+  { label: "About", href: "/#hero", section: "hero", icon: User },
+  {
+    label: "Projects",
+    href: "/#projects",
+    section: "projects",
+    icon: FolderOpen,
+  },
+  {
+    label: "Certs",
+    href: "/#certificates",
+    section: "certificates",
+    icon: Award,
+  },
+  {
+    label: "Resume",
+    href: "/resume/RESUME - KEEMCHARD TAMIO.pdf",
+    section: "",
+    icon: Paperclip,
+    external: true,
+  },
+  {
+    label: "Contact",
+    href: "/#contact",
+    section: "contact",
+    icon: MessageSquare,
+  },
 ];
 
 export default function Navbar() {
@@ -30,7 +59,9 @@ export default function Navbar() {
       }
 
       const midpoint = window.innerHeight * 0.5;
-      const sections = Array.from(document.querySelectorAll<HTMLElement>("section[id]"));
+      const sections = Array.from(
+        document.querySelectorAll<HTMLElement>("section[id]"),
+      );
       let best = "";
       for (const sec of sections) {
         if (sec.getBoundingClientRect().top <= midpoint) best = sec.id;
@@ -50,20 +81,22 @@ export default function Navbar() {
       {/* Desktop */}
       <nav
         className={`hidden md:flex fixed top-0 w-full z-50 transition-all duration-300
-          ${inHero
-            ? "bg-transparent"
-            : scrolled
-              ? "bg-light-bg/95 dark:bg-dark-bg/95 backdrop-blur-xl shadow-sm"
-              : "bg-light-bg dark:bg-dark-bg"
+          ${
+            inHero
+              ? "bg-transparent"
+              : scrolled
+                ? "bg-light-bg/95 dark:bg-dark-bg/95 backdrop-blur-xl shadow-sm"
+                : "bg-light-bg dark:bg-dark-bg"
           }`}
       >
         <div className="max-w-7xl mx-auto px-8 lg:px-20 h-16 flex items-center justify-between w-full">
           <Link
             href="/"
             className={`text-lg font-bold tracking-[0.15em] transition-colors duration-300
-              ${inHero
-                ? "text-white hover:text-white/80"
-                : "text-dark dark:text-white hover:text-primary"
+              ${
+                inHero
+                  ? "text-white hover:text-white/80"
+                  : "text-dark dark:text-white hover:text-primary"
               }`}
           >
             kc
@@ -78,15 +111,18 @@ export default function Navbar() {
                   href={item.href}
                   target={"external" in item ? "_blank" : undefined}
                   rel={"external" in item ? "noopener noreferrer" : undefined}
-                  onClick={() => { if (item.section) setActive(item.section); }}
+                  onClick={() => {
+                    if (item.section) setActive(item.section);
+                  }}
                   className={`relative text-sm font-medium pb-1 transition-all duration-200
-                    ${inHero
-                      ? isActive
-                        ? "text-white"
-                        : "text-white/50 hover:text-white/80"
-                      : isActive
-                        ? "text-dark dark:text-white"
-                        : "text-dark/40 dark:text-white/35 hover:text-dark/70 dark:hover:text-white/60"
+                    ${
+                      inHero
+                        ? isActive
+                          ? "text-white"
+                          : "text-white/50 hover:text-white/80"
+                        : isActive
+                          ? "text-dark dark:text-white"
+                          : "text-dark/40 dark:text-white/35 hover:text-dark/70 dark:hover:text-white/60"
                     }`}
                 >
                   {item.label}
@@ -97,17 +133,18 @@ export default function Navbar() {
               );
             })}
 
-            <button
+            {/* <button
               onClick={toggleTheme}
               aria-label="Toggle theme"
               className={`w-8 h-8 rounded-full flex items-center justify-center transition-colors duration-200
-                ${inHero
-                  ? "text-white/50 hover:text-white"
-                  : "text-dark/35 dark:text-white/35 hover:text-dark dark:hover:text-white"
+                ${
+                  inHero
+                    ? "text-white/50 hover:text-white"
+                    : "text-dark/35 dark:text-white/35 hover:text-dark dark:hover:text-white"
                 }`}
             >
               {theme === "dark" ? <Sun size={16} /> : <Moon size={16} />}
-            </button>
+            </button> */}
           </div>
         </div>
       </nav>
@@ -127,7 +164,9 @@ export default function Navbar() {
                   href={item.href}
                   target={"external" in item ? "_blank" : undefined}
                   rel={"external" in item ? "noopener noreferrer" : undefined}
-                  onClick={() => { if (item.section) setActive(item.section); }}
+                  onClick={() => {
+                    if (item.section) setActive(item.section);
+                  }}
                   className={`flex flex-col items-center gap-0.5 px-3 py-1.5 min-w-[48px]
                               transition-all duration-200
                               ${isActive ? "text-dark dark:text-white" : "text-dark/25 dark:text-white/25"}`}
