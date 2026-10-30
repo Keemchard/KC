@@ -35,7 +35,10 @@ export default function Hero() {
           sizes="55vw"
         />
         {/* Film grain overlay */}
-        <div className="absolute inset-0 photo-grain opacity-[0.035] mix-blend-overlay pointer-events-none" aria-hidden="true" />
+        <div
+          className="absolute inset-0 photo-grain opacity-[0.035] mix-blend-overlay pointer-events-none"
+          aria-hidden="true"
+        />
         {/* Left fade into background */}
         <div
           className="absolute inset-y-0 left-0 w-40 bg-gradient-to-r from-dark-bg to-transparent"
@@ -53,7 +56,10 @@ export default function Hero() {
           priority
           sizes="100vw"
         />
-        <div className="absolute inset-0 photo-grain opacity-[0.035] mix-blend-overlay pointer-events-none" aria-hidden="true" />
+        <div
+          className="absolute inset-0 photo-grain opacity-[0.035] mix-blend-overlay pointer-events-none"
+          aria-hidden="true"
+        />
         <div
           className="absolute inset-0 bg-gradient-to-t from-dark-bg via-dark-bg/80 to-dark-bg/40"
           aria-hidden="true"
@@ -74,8 +80,8 @@ export default function Hero() {
           </h1>
 
           <p className="mt-6 text-base sm:text-lg text-white/50 max-w-md leading-relaxed">
-            I build web applications with modern technologies and a focus on
-            creating meaningful, user-friendly experiences.
+            Crafting seamless web and mobile applications that turn complex
+            business requirements into intuitive user experiences.
           </p>
 
           <div className="flex items-center gap-6 mt-10">
