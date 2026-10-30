@@ -1,99 +1,119 @@
+"use client";
+
+import { useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
+import { ChevronLeft, ChevronRight, ExternalLink, ArrowRight } from "lucide-react";
 
 const certificates = [
   {
     image: "/images/cert/SQME cert image.png",
     title: "Web Developer Intern",
-    subtitle: "Certificate",
-    issuer: "SQME Professionals Inc.",
-    year: "2022",
-    color: "from-orange-900/80",
-  },
-  {
-    image: "/images/cert/web-dev - cert.jpg",
-    title: "Web Development",
-    subtitle: "Certificate of Training",
-    issuer: "TESDA × MINDTECH",
-    year: "2021",
-    color: "from-blue-900/80",
+    issuer: "SQME",
   },
   {
     image: "/images/cert/creativeweb-design - cert.jpg",
     title: "Creative Web Design",
-    subtitle: "Certificate of Training",
-    issuer: "TESDA × MINDTECH",
-    year: "2021",
-    color: "from-violet-900/80",
+    issuer: "Mindtech",
+  },
+  {
+    image: "/images/cert/web-dev - cert.jpg",
+    title: "Web Development",
+    issuer: "TESDA x MINDTECH",
   },
 ];
 
 export default function CertificatesSection() {
+  const scrollRef = useRef<HTMLDivElement>(null);
+
+  const scroll = (dir: "left" | "right") => {
+    if (!scrollRef.current) return;
+    const card = scrollRef.current.querySelector<HTMLElement>("[data-card]");
+    const w = (card?.offsetWidth ?? 260) + 16;
+    scrollRef.current.scrollBy({ left: dir === "left" ? -w : w, behavior: "smooth" });
+  };
+
   return (
-    <section
-      id="certificates"
-      className="py-16 md:py-20 bg-dark/[0.015] dark:bg-white/[0.015]"
-    >
-      <div className="max-w-6xl mx-auto px-6 md:px-8">
-        <div className="text-center mb-8">
-          <span className="section-label">Credentials</span>
-          <h2 className="section-heading section-heading-accent">CERTIFICATES</h2>
+    <section id="certificates" className="py-16 md:py-24 bg-dark/[0.02] dark:bg-white/[0.015]">
+      <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
+        {/* Header */}
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-10">
+          <div>
+            <span className="section-label">Credentials</span>
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-dark dark:text-white tracking-tight leading-none">
+              CERTIFICATES
+            </h2>
+          </div>
+          <div className="flex items-end gap-6">
+            <p className="text-sm text-dark/50 dark:text-white/40 max-w-xs leading-relaxed hidden md:block">
+              Completed training programs and certifications that help me grow and deliver better solutions.
+            </p>
+            <div className="flex gap-2 shrink-0">
+              <button
+                onClick={() => scroll("left")}
+                className="w-10 h-10 rounded-full border border-dark/10 dark:border-white/10
+                           flex items-center justify-center text-dark/40 dark:text-white/40
+                           hover:border-primary hover:text-primary transition-all"
+                aria-label="Previous"
+              >
+                <ChevronLeft size={18} />
+              </button>
+              <button
+                onClick={() => scroll("right")}
+                className="w-10 h-10 rounded-full border border-dark/10 dark:border-white/10
+                           flex items-center justify-center text-dark/40 dark:text-white/40
+                           hover:border-primary hover:text-primary transition-all"
+                aria-label="Next"
+              >
+                <ChevronRight size={18} />
+              </button>
+            </div>
+          </div>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-5 max-w-4xl mx-auto">
+        {/* Cards */}
+        <div
+          ref={scrollRef}
+          className="flex gap-4 overflow-x-auto pb-4 snap-x snap-mandatory scrollbar-hide"
+          style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
+        >
           {certificates.map((cert) => (
             <div
               key={cert.title}
-              className="group relative aspect-[3/4] rounded-3xl overflow-hidden
-                         shadow-lg hover:shadow-2xl hover:shadow-primary/10
-                         hover:-translate-y-2 transition-all duration-500 cursor-pointer"
+              data-card
+              className="min-w-[220px] sm:min-w-[250px] md:min-w-[260px] flex-shrink-0 snap-start
+                         bg-white dark:bg-white/[0.04] border border-dark/[0.06] dark:border-white/[0.08]
+                         rounded-2xl overflow-hidden
+                         hover:border-primary/25 transition-all duration-300 group"
             >
-              {/* Background image */}
-              <Image
-                src={cert.image}
-                alt={cert.title}
-                fill
-                className="object-cover transition-transform duration-700 group-hover:scale-105"
-              />
-
-              {/* Always-visible bottom gradient with title */}
-              <div className={`absolute inset-x-0 bottom-0 h-2/5 bg-gradient-to-t ${cert.color} to-transparent`} />
-
-              {/* Year pill top-right */}
-              <div className="absolute top-4 right-4 bg-white/20 backdrop-blur-md
-                              text-white text-xs font-bold px-3 py-1 rounded-full
-                              border border-white/30">
-                {cert.year}
+              {/* Image */}
+              <div className="relative aspect-[4/3] bg-dark/[0.03] dark:bg-white/[0.03] overflow-hidden">
+                <Image
+                  src={cert.image}
+                  alt={cert.title}
+                  fill
+                  sizes="280px"
+                  className="object-cover group-hover:scale-105 transition-transform duration-500"
+                />
               </div>
 
-              {/* Always-visible title at bottom */}
-              <div className="absolute bottom-0 inset-x-0 p-5">
-                <p className="text-white font-bold text-base leading-snug">{cert.title}</p>
-                <p className="text-white/70 text-xs font-medium">{cert.subtitle}</p>
-              </div>
-
-              {/* Hover overlay — full details */}
-              <div className="absolute inset-0 bg-dark/80 backdrop-blur-sm
-                              flex flex-col items-center justify-center p-6 text-center
-                              opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                <div className="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center mb-4">
-                  <ArrowRight size={18} className="text-primary" />
+              {/* Info */}
+              <div className="p-4 flex items-start justify-between gap-2">
+                <div>
+                  <h3 className="font-semibold text-dark dark:text-white text-sm leading-snug">
+                    {cert.title}
+                  </h3>
+                  <p className="text-xs text-dark/40 dark:text-white/35 mt-0.5">
+                    {cert.issuer}
+                  </p>
                 </div>
-                <p className="text-white font-bold text-lg leading-snug mb-1">{cert.title}</p>
-                <p className="text-white/60 text-sm mb-4">{cert.subtitle}</p>
-                <div className="w-8 h-0.5 bg-primary mx-auto mb-4" />
-                <p className="text-white/80 text-sm font-medium">{cert.issuer}</p>
-                <span className="mt-4 text-xs font-bold text-primary bg-primary/10
-                                 border border-primary/30 px-3 py-1 rounded-full">
-                  {cert.year}
-                </span>
+                <ExternalLink size={14} className="shrink-0 text-dark/20 dark:text-white/20 mt-0.5" />
               </div>
             </div>
           ))}
         </div>
 
-<div className="text-center mt-8">
+        <div className="mt-8">
           <Link href="/certificates" className="btn-primary">
             See All Certificates
             <ArrowRight size={16} />

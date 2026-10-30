@@ -2,7 +2,7 @@
 
 import { createContext, useContext, useEffect, useState } from "react";
 
-export type Theme = "light" | "dark" | "green-luxury" | "globe-telecom";
+export type Theme = "light" | "dark";
 
 const ThemeContext = createContext<{
   theme: Theme;
@@ -17,7 +17,7 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
 
   useEffect(() => {
     const saved = localStorage.getItem("theme") as Theme | null;
-    if (saved) setTheme(saved);
+    if (saved === "light" || saved === "dark") setTheme(saved);
     setMounted(true);
   }, []);
 
@@ -25,7 +25,7 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     if (!mounted) return;
     const root = document.documentElement;
     root.setAttribute("data-theme", theme);
-    root.classList.toggle("dark", theme !== "light");
+    root.classList.toggle("dark", theme === "dark");
     localStorage.setItem("theme", theme);
   }, [theme, mounted]);
 

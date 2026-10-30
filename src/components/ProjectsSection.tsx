@@ -1,330 +1,184 @@
 "use client";
 
-import { useState, useEffect, useCallback, useRef } from "react";
+import { useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { ChevronLeft, ChevronRight, ArrowRight } from "lucide-react";
-import { useTheme } from "./ThemeProvider";
-import { motion, useMotionValue, useAnimation, type PanInfo } from "motion/react";
 
-// ─── Personal Projects ────────────────────────────────────────────────────────
-const personalSlides = [
-  { src: "/images/hired-log/dashboard.png",              alt: "hired.log" },
-  { src: "/images/restoflash/front.png",                alt: "Resto Flash" },
-  { src: "/images/floodwatch/post.png",                 alt: "FloodWatch" },
-  { src: "/images/zhitshoe/zhitshoeForportfolio.png",   alt: "ZhitShoe" },
-  { src: "/images/bosskc/bosskcForPortfolio.png",       alt: "BossKC" },
-  { src: "/images/newwords/newWordsAppForportfolio.png", alt: "New Words App" },
-];
-
-// ─── Globe Telecom Work Projects ─────────────────────────────────────────────
-const globeProjects = [
+const projects = [
   {
-    id: "fosp",
-    title: "GT FOSP Performance Dashboard",
-    image: "/images/globe-project-assets/fosp/preview.png",
-    tagline: "Real-time field operations monitoring across 8 Philippine territories",
+    title: "hired.log",
     description:
-      "A unified operations dashboard consolidating KPIs across three business domains — Selling & Installation, Network Maintenance, and Last Mile Repair — with live trends, territory breakdowns, and month-over-month deltas.",
-    features: [
-      "Scorecard Overview",
-      "KPI Cards with Live Trends",
-      "Territory Breakdown (T1–T8)",
-      "3 Operational Domains",
-      "Collapsible Navigation",
-    ],
-    stack: ["Next.js 15", "React 18", "TypeScript", "Recharts", "TanStack Query", "SCSS Modules"],
+      "A full-stack job application tracker with AI-powered auto-fill, cover letter generator, resume match scorer, and interview prep mode.",
+    image: "/images/hired-log/dashboard.png",
+    tags: ["Next.js", "TypeScript", "Firebase", "Claude AI"],
+    type: "Web App",
+    live: "https://hired-log.vercel.app",
   },
   {
-    id: "dataloom",
-    title: "DataLoom — Data Product Blueprint Platform",
-    image: "/images/globe-project-assets/dataloom/preview.png",
-    tagline: "End-to-end lifecycle platform for data product governance",
+    title: "Resto Flash",
     description:
-      "Streamlines creation, management, and governance of data products — from demand intake to published blueprint — with AI-assisted tools to reduce duplication across Globe's telecom organization.",
-    features: [
-      "Existence Checker + AI Matching",
-      "DPB Generator",
-      "DPB & Pipeline Registry",
-      "MAVI AI Assistant",
-      "Access Management",
-      "Notifications",
-    ],
-    stack: ["React", "TypeScript", "Next.js", "AI/ML Integration"],
+      "A restaurant ordering application that allows users to browse menus, place orders, and enjoy a smooth ordering experience.",
+    image: "/images/restoflash/front.png",
+    tags: ["C#", "Windows Forms"],
+    type: "Desktop App",
+    github: "https://github.com/Keemchard/Resto-Flash",
   },
   {
-    id: "intellihub",
-    title: "IntelliHub — Network Analytics Platform",
-    image: "/images/globe-project-assets/intellihub/intel.png",
-    tagline: "Centralized analytics discovery hub for Globe's Network Technology Group",
+    title: "FloodWatch",
     description:
-      "An internal analytics platform for Globe's NTG that centralizes discovery, access, and enablement across trusted NAI data products — with a marketplace, role-aware dashboards, and a conversational AI assistant.",
-    features: [
-      "Analytics Marketplace",
-      "Access & Enablement Hub",
-      "Navi AI Assistant",
-      "Onboarding Checklist",
-      "Role-aware Home Dashboard",
-    ],
-    stack: ["Next.js 14", "TypeScript", "Tailwind CSS", "React Query", "Zod", "BigQuery"],
+      "A web-based IoT application for flood monitoring with user posts, automated polls, and monthly analysis diagrams.",
+    image: "/images/floodwatch/post.png",
+    tags: ["IoT", "Web App", "CRUD"],
+    type: "Web App",
+    github: "https://github.com/FLOODWATCH",
   },
   {
-    id: "eagle-eye",
-    title: "Eagle Eye",
-    image: "/images/globe-project-assets/eagle-eye/preview.png",
-    tagline: "Lorem ipsum dolor sit amet consectetur adipiscing elit",
+    title: "ZhitShoe",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.",
-    features: [
-      "Lorem Ipsum Feature",
-      "Dolor Sit Amet",
-      "Consectetur Adipiscing",
-      "Eiusmod Tempor",
-    ],
-    stack: ["React", "TypeScript", "Node.js"],
+      "An e-commerce website with modern responsive design, created during front-end training at Mindtech.",
+    image: "/images/zhitshoe/zhitshoeForportfolio.png",
+    tags: ["HTML", "CSS", "JavaScript"],
+    type: "Web App",
+    live: "https://zhitshoe.netlify.app/",
+  },
+  {
+    title: "BossKC",
+    description:
+      "An academic business service website with all relevant information about acad servant services.",
+    image: "/images/bosskc/bosskcForPortfolio.png",
+    tags: ["HTML", "CSS", "JavaScript"],
+    type: "Web App",
+    live: "https://keemchard-acad-servant.netlify.app/",
   },
 ];
 
-// ─── Carousel ────────────────────────────────────────────────────────────────
-function Carousel({
-  slides,
-  current,
-  setCurrent,
-  paused,
-  setPaused,
-  next,
-  prev,
-}: {
-  slides: typeof personalSlides;
-  current: number;
-  setCurrent: (i: number) => void;
-  paused: boolean;
-  setPaused: (v: boolean) => void;
-  next: () => void;
-  prev: () => void;
-}) {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const x = useMotionValue(0);
-  const controls = useAnimation();
-
-  const goTo = useCallback(
-    (index: number) => {
-      const width = containerRef.current?.offsetWidth ?? 0;
-      controls.start({ x: -index * width, transition: { type: "spring", stiffness: 300, damping: 30 } });
-      setCurrent(index);
-    },
-    [controls, setCurrent]
-  );
-
-  useEffect(() => {
-    const width = containerRef.current?.offsetWidth ?? 0;
-    controls.start({ x: -current * width, transition: { type: "spring", stiffness: 300, damping: 30 } });
-  }, [current, controls]);
-
-  function onDragEnd(_: never, info: PanInfo) {
-    const threshold = 50;
-    if (info.offset.x < -threshold) next();
-    else if (info.offset.x > threshold) prev();
-    else goTo(current);
-  }
-
-  return (
-    <div
-      ref={containerRef}
-      className="relative w-full max-w-4xl mx-auto aspect-video rounded-3xl overflow-hidden shadow-2xl group"
-      onMouseEnter={() => setPaused(true)}
-      onMouseLeave={() => setPaused(false)}
-    >
-      <motion.div
-        className="flex h-full cursor-grab active:cursor-grabbing"
-        style={{ x }}
-        animate={controls}
-        drag="x"
-        dragConstraints={{ left: -(slides.length - 1) * (containerRef.current?.offsetWidth ?? 800), right: 0 }}
-        dragElastic={0.1}
-        onDragEnd={onDragEnd}
-      >
-        {slides.map((slide) => (
-          <div
-            key={slide.src}
-            className="min-w-full h-full flex items-center justify-center bg-dark/5 dark:bg-white/5 p-4 select-none"
-          >
-            <Image
-              src={slide.src}
-              alt={slide.alt}
-              width={900}
-              height={600}
-              draggable={false}
-              className="max-w-full max-h-full object-contain rounded-lg shadow-lg pointer-events-none"
-            />
-          </div>
-        ))}
-      </motion.div>
-
-      <button
-        onClick={prev}
-        className="absolute left-3 top-1/2 -translate-y-1/2 p-2.5 rounded-full
-                   bg-black/30 text-white hover:bg-primary transition-all
-                   opacity-0 group-hover:opacity-100"
-        aria-label="Previous"
-      >
-        <ChevronLeft size={22} />
-      </button>
-      <button
-        onClick={next}
-        className="absolute right-3 top-1/2 -translate-y-1/2 p-2.5 rounded-full
-                   bg-black/30 text-white hover:bg-primary transition-all
-                   opacity-0 group-hover:opacity-100"
-        aria-label="Next"
-      >
-        <ChevronRight size={22} />
-      </button>
-
-      <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
-        {slides.map((_, i) => (
-          <button
-            key={i}
-            onClick={() => goTo(i)}
-            className={`h-2 rounded-full transition-all duration-300 ${
-              i === current ? "w-8 bg-primary" : "w-2 bg-white/50 hover:bg-white/80"
-            }`}
-            aria-label={`Slide ${i + 1}`}
-          />
-        ))}
-      </div>
-    </div>
-  );
-}
-
-// ─── Main Component ───────────────────────────────────────────────────────────
 export default function ProjectsSection() {
-  const { theme, setTheme } = useTheme();
-  const [current, setCurrent] = useState(0);
-  const [paused, setPaused] = useState(false);
+  const scrollRef = useRef<HTMLDivElement>(null);
 
-  const isGlobe = theme === "globe-telecom";
-
-  const next = useCallback(() => setCurrent((c) => (c + 1) % personalSlides.length), []);
-  const prev = useCallback(() => setCurrent((c) => (c - 1 + personalSlides.length) % personalSlides.length), []);
-
-  useEffect(() => {
-    if (paused || isGlobe) return;
-    const id = setInterval(next, 5000);
-    return () => clearInterval(id);
-  }, [paused, isGlobe, next]);
-
-  // Reset slideshow index when switching away from globe
-  useEffect(() => {
-    if (!isGlobe) setCurrent(0);
-  }, [isGlobe]);
+  const scroll = (dir: "left" | "right") => {
+    if (!scrollRef.current) return;
+    const card = scrollRef.current.querySelector<HTMLElement>("[data-card]");
+    const w = (card?.offsetWidth ?? 350) + 16;
+    scrollRef.current.scrollBy({ left: dir === "left" ? -w : w, behavior: "smooth" });
+  };
 
   return (
-    <section id="projects" className="py-16 md:py-20">
-      <div className="max-w-6xl mx-auto px-6 md:px-8">
-
-        {/* Section header */}
-        <div className="text-center mb-10">
-          <span className="section-label">
-            {isGlobe ? "Acquiro · Globe Telecom" : "What I've built"}
-          </span>
-          <h2 className="section-heading section-heading-accent">PROJECTS</h2>
-          {isGlobe && (
-            <button
-              onClick={() => setTheme("dark")}
-              className="mt-4 text-xs text-dark/40 dark:text-white/30 hover:text-primary
-                         transition-colors duration-200 underline underline-offset-4"
-            >
-              ← Back to Personal Projects
-            </button>
-          )}
+    <section id="projects" className="py-16 md:py-24">
+      <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
+        {/* Header */}
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-10">
+          <div>
+            <span className="section-label">What I&apos;ve built</span>
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-dark dark:text-white tracking-tight leading-none">
+              PROJECTS
+            </h2>
+          </div>
+          <div className="flex items-end gap-6">
+            <p className="text-sm text-dark/50 dark:text-white/40 max-w-xs leading-relaxed hidden md:block">
+              A collection of real-world projects where I applied modern web technologies to solve problems and create meaningful user experiences.
+            </p>
+            <div className="flex gap-2 shrink-0">
+              <button
+                onClick={() => scroll("left")}
+                className="w-10 h-10 rounded-full border border-dark/10 dark:border-white/10
+                           flex items-center justify-center text-dark/40 dark:text-white/40
+                           hover:border-primary hover:text-primary transition-all"
+                aria-label="Previous"
+              >
+                <ChevronLeft size={18} />
+              </button>
+              <button
+                onClick={() => scroll("right")}
+                className="w-10 h-10 rounded-full border border-dark/10 dark:border-white/10
+                           flex items-center justify-center text-dark/40 dark:text-white/40
+                           hover:border-primary hover:text-primary transition-all"
+                aria-label="Next"
+              >
+                <ChevronRight size={18} />
+              </button>
+            </div>
+          </div>
         </div>
 
-        {/* ── Globe Telecom Work Projects ── */}
-        {isGlobe && (
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {globeProjects.map((project) => (
-              <div key={project.id} className="card overflow-hidden group flex flex-col">
-
-                {/* Screenshot */}
-                <div className="relative aspect-video bg-dark/5 dark:bg-white/5 overflow-hidden flex-shrink-0">
+        {/* Cards */}
+        <div
+          ref={scrollRef}
+          className="flex gap-4 overflow-x-auto pb-4 snap-x snap-mandatory scrollbar-hide"
+          style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
+        >
+          {projects.map((project) => {
+            const href = project.live || project.github || "/projects";
+            return (
+              <div
+                key={project.title}
+                data-card
+                className="min-w-[280px] sm:min-w-[320px] md:min-w-[340px] max-w-[380px] flex-shrink-0 snap-start
+                           bg-white dark:bg-white/[0.04] border border-dark/[0.06] dark:border-white/[0.08]
+                           rounded-2xl overflow-hidden flex flex-col
+                           hover:border-primary/25 transition-all duration-300 group"
+              >
+                {/* Image */}
+                <div className="relative aspect-[16/10] bg-dark/[0.03] dark:bg-white/[0.03] overflow-hidden">
                   <Image
                     src={project.image}
                     alt={project.title}
                     fill
-                    sizes="(max-width: 768px) 100vw, 50vw"
+                    sizes="380px"
                     className="object-cover group-hover:scale-105 transition-transform duration-500"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
-                  <span className="absolute top-3 left-3 px-3 py-1 rounded-full
-                                   bg-primary text-white text-[11px] font-bold
-                                   shadow-lg shadow-primary/40 tracking-wide">
-                    Globe Telecom
+                  <span className="absolute top-3 left-3 px-3 py-1 rounded-full text-[10px] font-bold
+                                   bg-dark-bg/70 dark:bg-dark-bg/80 text-white backdrop-blur-sm border border-white/10">
+                    {project.type}
                   </span>
                 </div>
 
                 {/* Content */}
                 <div className="p-5 flex flex-col flex-1">
-                  <h3 className="text-base font-bold text-dark dark:text-white mb-1 leading-snug">
+                  <h3 className="font-bold text-dark dark:text-white text-base mb-2">
                     {project.title}
                   </h3>
-                  <p className="text-[11px] text-primary/80 italic mb-3 font-medium">
-                    {project.tagline}
-                  </p>
-                  <p className="text-sm text-dark/65 dark:text-white/55 mb-4 leading-relaxed flex-1">
+                  <p className="text-sm text-dark/50 dark:text-white/40 leading-relaxed flex-1 mb-4">
                     {project.description}
                   </p>
 
-                  {/* Feature chips */}
+                  {/* Tags */}
                   <div className="flex flex-wrap gap-1.5 mb-4">
-                    {project.features.map((f) => (
+                    {project.tags.map((tag) => (
                       <span
-                        key={f}
-                        className="px-2.5 py-0.5 rounded-full bg-primary/10 text-primary text-[11px] font-medium"
+                        key={tag}
+                        className="px-2.5 py-0.5 rounded-full text-[10px] font-medium
+                                   border border-dark/[0.08] dark:border-white/[0.08]
+                                   text-dark/50 dark:text-white/40"
                       >
-                        {f}
+                        {tag}
                       </span>
                     ))}
                   </div>
 
-                  {/* Tech stack */}
-                  <div className="flex flex-wrap gap-1 pt-3 border-t border-gray-100 dark:border-white/5">
-                    {project.stack.map((s) => (
-                      <span
-                        key={s}
-                        className="px-2 py-0.5 rounded text-[10px] font-mono
-                                   bg-dark/5 dark:bg-white/5
-                                   text-dark/45 dark:text-white/35"
-                      >
-                        {s}
-                      </span>
-                    ))}
-                  </div>
+                  {/* Link */}
+                  <a
+                    href={href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1.5 text-sm font-medium text-primary
+                               hover:gap-2.5 transition-all duration-300"
+                  >
+                    View Project
+                    <ArrowRight size={14} />
+                  </a>
                 </div>
               </div>
-            ))}
-          </div>
-        )}
+            );
+          })}
+        </div>
 
-        {/* ── Personal Projects Carousel ── */}
-        {!isGlobe && (
-          <Carousel
-            slides={personalSlides}
-            current={current}
-            setCurrent={setCurrent}
-            paused={paused}
-            setPaused={setPaused}
-            next={next}
-            prev={prev}
-          />
-        )}
-        {!isGlobe && (
-          <div className="text-center mt-7">
-            <Link href="/projects" className="btn-primary">
-              See All Projects
-              <ArrowRight size={16} />
-            </Link>
-          </div>
-        )}
+        <div className="mt-8">
+          <Link href="/projects" className="btn-primary">
+            See All Projects
+            <ArrowRight size={16} />
+          </Link>
+        </div>
       </div>
     </section>
   );

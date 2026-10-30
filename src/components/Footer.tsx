@@ -1,15 +1,13 @@
 export default function Footer() {
   return (
-    <footer className="border-t border-gray-100 dark:border-white/5 py-6 md:py-8 pb-24 md:pb-8 mt-[2rem]">
-      <div className="max-w-6xl mx-auto px-6 md:px-8 flex flex-col md:flex-row items-center justify-between gap-3 text-sm">
-        <span className="font-black text-primary text-lg tracking-widest">
-          KEEMCHARD
+    <footer className="border-t border-dark/[0.06] dark:border-white/[0.06] py-6 md:py-8 pb-24 md:pb-8">
+      <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 flex items-center justify-between">
+        <span className="font-bold text-dark dark:text-white text-lg tracking-[0.08em]">
+          ke
         </span>
-        <p className="text-dark/40 dark:text-white/30 text-center">
-          &copy; {new Date().getFullYear()} Keemchard Tamio. All rights
-          reserved.
+        <p className="text-dark/30 dark:text-white/20 text-xs">
+          &copy; {new Date().getFullYear()} Keemchard Tamio. All rights reserved.
         </p>
-        {/* <p className="text-dark/40 dark:text-white/30">Made with Next.js</p> */}
       </div>
     </footer>
   );
