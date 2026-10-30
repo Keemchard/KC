@@ -16,11 +16,18 @@ const navItems = [
 export default function Navbar() {
   const { theme, setTheme } = useTheme();
   const [scrolled, setScrolled] = useState(false);
+  const [inHero, setInHero] = useState(true);
   const [active, setActive] = useState("hero");
 
   useEffect(() => {
     const update = () => {
       setScrolled(window.scrollY > 60);
+
+      const heroEl = document.getElementById("hero");
+      if (heroEl) {
+        const heroBottom = heroEl.getBoundingClientRect().bottom;
+        setInHero(heroBottom > 64);
+      }
 
       const midpoint = window.innerHeight * 0.5;
       const sections = Array.from(document.querySelectorAll<HTMLElement>("section[id]"));
@@ -43,15 +50,21 @@ export default function Navbar() {
       {/* Desktop */}
       <nav
         className={`hidden md:flex fixed top-0 w-full z-50 transition-all duration-300
-          ${scrolled
-            ? "bg-light-bg/95 dark:bg-dark-bg/95 backdrop-blur-xl shadow-sm"
-            : "bg-light-bg dark:bg-dark-bg"
+          ${inHero
+            ? "bg-transparent"
+            : scrolled
+              ? "bg-light-bg/95 dark:bg-dark-bg/95 backdrop-blur-xl shadow-sm"
+              : "bg-light-bg dark:bg-dark-bg"
           }`}
       >
         <div className="max-w-7xl mx-auto px-8 lg:px-20 h-16 flex items-center justify-between w-full">
           <Link
             href="/"
-            className="text-lg font-bold tracking-[0.15em] text-dark dark:text-white hover:text-primary transition-colors duration-300"
+            className={`text-lg font-bold tracking-[0.15em] transition-colors duration-300
+              ${inHero
+                ? "text-white hover:text-white/80"
+                : "text-dark dark:text-white hover:text-primary"
+              }`}
           >
             kc
           </Link>
@@ -67,9 +80,13 @@ export default function Navbar() {
                   rel={"external" in item ? "noopener noreferrer" : undefined}
                   onClick={() => { if (item.section) setActive(item.section); }}
                   className={`relative text-sm font-medium pb-1 transition-all duration-200
-                    ${isActive
-                      ? "text-dark dark:text-white"
-                      : "text-dark/40 dark:text-white/35 hover:text-dark/70 dark:hover:text-white/60"
+                    ${inHero
+                      ? isActive
+                        ? "text-white"
+                        : "text-white/50 hover:text-white/80"
+                      : isActive
+                        ? "text-dark dark:text-white"
+                        : "text-dark/40 dark:text-white/35 hover:text-dark/70 dark:hover:text-white/60"
                     }`}
                 >
                   {item.label}
@@ -83,9 +100,11 @@ export default function Navbar() {
             <button
               onClick={toggleTheme}
               aria-label="Toggle theme"
-              className="w-8 h-8 rounded-full flex items-center justify-center
-                         text-dark/35 dark:text-white/35 hover:text-dark dark:hover:text-white
-                         transition-colors duration-200"
+              className={`w-8 h-8 rounded-full flex items-center justify-center transition-colors duration-200
+                ${inHero
+                  ? "text-white/50 hover:text-white"
+                  : "text-dark/35 dark:text-white/35 hover:text-dark dark:hover:text-white"
+                }`}
             >
               {theme === "dark" ? <Sun size={16} /> : <Moon size={16} />}
             </button>

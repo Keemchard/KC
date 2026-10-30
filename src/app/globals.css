@@ -70,43 +70,6 @@
 
 /* ── Hero ── */
 
-.hero-name-glow {
-  filter: drop-shadow(0 4px 20px rgb(var(--primary) / 0.35));
-}
-
-/* Subtle diagonal window-light bars in the background */
-.hero-window-light::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 65%;
-  height: 100%;
-  background: repeating-linear-gradient(
-    -55deg,
-    transparent,
-    transparent 80px,
-    rgb(var(--primary) / 0.02) 80px,
-    rgb(var(--primary) / 0.02) 140px
-  );
-  z-index: 0;
-}
-
-[data-theme="light"] .hero-window-light::before {
-  background: repeating-linear-gradient(
-    -55deg,
-    transparent,
-    transparent 80px,
-    rgb(var(--primary) / 0.04) 80px,
-    rgb(var(--primary) / 0.04) 140px
-  );
-}
-
-/* High-key portrait in light mode */
-[data-theme="light"] .hero-portrait {
-  filter: brightness(1.15) contrast(0.88) saturate(0.85);
-}
-
 /* ── Hide scrollbar on horizontal scroll containers ── */
 .scrollbar-hide::-webkit-scrollbar { display: none; }
 

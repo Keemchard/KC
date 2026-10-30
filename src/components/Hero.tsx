@@ -1,196 +1,125 @@
 "use client";
 
-import { useEffect, useState, useCallback } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Linkedin, Github, Facebook, Twitter, ArrowDown } from "lucide-react";
-
-const roles = ["Software Engineer", "Front-End Developer", "Kaboom!"];
+import { Github, Linkedin, Mail } from "lucide-react";
 
 const socials = [
+  { icon: Github, href: "https://github.com/Keemchard", label: "GitHub" },
   {
     icon: Linkedin,
     href: "https://www.linkedin.com/in/keemchard-tamio-498447228/",
     label: "LinkedIn",
   },
-  { icon: Github, href: "https://github.com/Keemchard", label: "GitHub" },
   {
-    icon: Facebook,
-    href: "https://web.facebook.com/keemchard.tamio.1",
-    label: "Facebook",
+    icon: Mail,
+    href: "mailto:keemchard.tamio@gmail.com",
+    label: "Email",
   },
-  { icon: Twitter, href: "https://twitter.com/kmchrd", label: "Twitter" },
 ];
 
-function useTypewriter(words: string[], speed = 150, pause = 2000) {
-  const [text, setText] = useState("");
-  const [wordIndex, setWordIndex] = useState(0);
-  const [isDeleting, setIsDeleting] = useState(false);
-
-  const tick = useCallback(() => {
-    const current = words[wordIndex];
-    setText((prev) =>
-      isDeleting
-        ? current.substring(0, prev.length - 1)
-        : current.substring(0, prev.length + 1),
-    );
-  }, [words, wordIndex, isDeleting]);
-
-  useEffect(() => {
-    const current = words[wordIndex];
-    let timeout: ReturnType<typeof setTimeout>;
-    if (!isDeleting && text === current) {
-      timeout = setTimeout(() => setIsDeleting(true), pause);
-    } else if (isDeleting && text === "") {
-      setIsDeleting(false);
-      setWordIndex((i) => (i + 1) % words.length);
-    } else {
-      timeout = setTimeout(tick, isDeleting ? speed / 2 : speed);
-    }
-    return () => clearTimeout(timeout);
-  }, [text, isDeleting, wordIndex, words, speed, pause, tick]);
-
-  return text;
-}
-
 export default function Hero() {
-  const text = useTypewriter(roles);
-
   return (
     <section
       id="hero"
-      className="min-h-screen flex items-center pt-20 pb-24 md:pb-0 relative overflow-hidden"
+      className="relative min-h-screen flex items-center overflow-hidden bg-dark-bg"
     >
-      {/* Window light ambient effect */}
-      <div
-        className="hero-window-light absolute inset-0 pointer-events-none"
-        aria-hidden="true"
-      />
+      {/* Portrait — anchored right */}
+      <div className="absolute top-0 right-0 bottom-0 w-[55%] lg:w-[50%] xl:w-[55%] hidden md:block">
+        <Image
+          src="/images/personal/new-personal-img.png"
+          alt="Keemchard Tamio"
+          fill
+          className="object-cover object-[center_30%]"
+          priority
+          sizes="55vw"
+        />
+        {/* Left fade into background */}
+        <div
+          className="absolute inset-y-0 left-0 w-40 bg-gradient-to-r from-dark-bg to-transparent"
+          aria-hidden="true"
+        />
+      </div>
 
-      {/* Ambient glow */}
-      <div
-        className="pointer-events-none absolute -z-10 w-[500px] h-[500px]
-                   rounded-full blur-[120px] bg-primary/8 top-1/4 right-[-10%]"
-        aria-hidden="true"
-      />
-      <div
-        className="pointer-events-none absolute -z-10 w-72 h-72
-                   rounded-full blur-[100px] bg-primary/5 bottom-1/4 left-[-5%]"
-        aria-hidden="true"
-      />
+      {/* Mobile: show image behind with overlay */}
+      <div className="absolute inset-0 md:hidden">
+        <Image
+          src="/images/personal/new-personal-img.png"
+          alt="Keemchard Tamio"
+          fill
+          className="object-cover object-[65%_top]"
+          priority
+          sizes="100vw"
+        />
+        <div
+          className="absolute inset-0 bg-gradient-to-t from-dark-bg via-dark-bg/80 to-dark-bg/40"
+          aria-hidden="true"
+        />
+      </div>
 
-      <div className="max-w-7xl mx-auto px-6 md:px-12 w-full relative z-10">
-        <div className="flex flex-col-reverse lg:flex-row items-center gap-10 lg:gap-16">
-          {/* ── Text ── */}
-          <div className="flex-1 text-center lg:text-left">
-            <div className="flex items-center gap-3 justify-center lg:justify-start mb-6">
-              <div className="w-8 h-px bg-primary" />
-              <span className="text-xs font-semibold tracking-[0.25em] uppercase text-primary">
-                Hello, I'm
-              </span>
-            </div>
+      {/* Content */}
+      <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-12 lg:px-20 w-full">
+        <div className="max-w-xl">
+          <p className="text-xs sm:text-sm font-semibold tracking-[0.3em] uppercase text-white/60 mb-6">
+            Frontend Engineer
+          </p>
 
-            <h1 className="leading-[0.95]">
-              <span className="block text-4xl sm:text-5xl lg:text-6xl font-bold text-dark dark:text-white tracking-tight">
-                Keemchard
-              </span>
-              <span className="hero-name-glow block text-5xl sm:text-6xl lg:text-8xl font-black text-primary tracking-tight mt-1">
-                TAMIO
-              </span>
-            </h1>
+          <h1 className="text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-bold text-white leading-[1.05] tracking-tight">
+            Tamio,
+            <br />
+            Keemchard.
+          </h1>
 
-            <p className="mt-6 text-base sm:text-lg text-dark/50 dark:text-white/50 h-7 font-medium">
-              <span>{text}</span>
-              <span className="typewriter-cursor" />
-            </p>
+          <p className="mt-6 text-base sm:text-lg text-white/50 max-w-md leading-relaxed">
+            I build web applications with modern technologies and a focus on
+            creating meaningful, user-friendly experiences.
+          </p>
 
-            <p className="mt-4 text-sm sm:text-base text-dark/55 dark:text-white/40 max-w-md leading-relaxed mx-auto lg:mx-0">
-              Crafting clean, functional interfaces &mdash; turning ideas into
-              seamless digital experiences.
-            </p>
-
-            <div className="flex flex-wrap items-center gap-3 mt-8 justify-center lg:justify-start">
-              <a href="#projects" className="btn-primary text-sm sm:text-base">
-                View My Work
-              </a>
-              <Link
-                href="/about"
-                className="px-6 sm:px-7 py-3 rounded-full font-semibold text-sm sm:text-base
-                           border-2 border-primary/25
-                           text-dark dark:text-white/70
-                           hover:border-primary/60 hover:text-primary transition-all duration-300
-                           inline-flex items-center gap-2"
-              >
-                About Me
-              </Link>
-            </div>
-
-            <ul className="flex gap-3 mt-8 justify-center lg:justify-start">
-              {socials.map(({ icon: Icon, href, label }) => (
-                <li key={href}>
-                  <a
-                    href={href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label={label}
-                    className="inline-flex items-center justify-center w-10 h-10 rounded-full
-                               border border-dark/10 dark:border-white/10
-                               text-dark/50 dark:text-white/40
-                               hover:bg-primary hover:text-white hover:border-primary
-                               transition-all duration-300"
-                  >
-                    <Icon size={17} />
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* ── Portrait ── */}
-          <div className="flex-shrink-0 flex justify-center lg:justify-end">
-            <div className="relative">
-              {/* Decorative offset frame */}
-              <div
-                className="absolute -inset-3 border border-primary/20 rounded-2xl pointer-events-none"
-                aria-hidden="true"
-              />
-
-              <div
-                className="relative w-60 h-72 sm:w-72 sm:h-[340px] md:w-80 md:h-[400px] lg:w-[360px] lg:h-[460px]
-                           rounded-xl overflow-hidden
-                           shadow-2xl shadow-black/20 dark:shadow-black/50"
-              >
-                <Image
-                  src="/images/personal/new-personal-img.png"
-                  alt="Keemchard Tamio"
-                  fill
-                  className="object-cover object-[center_12%] hero-portrait"
-                  priority
-                  sizes="(max-width: 640px) 240px, (max-width: 768px) 288px, (max-width: 1024px) 320px, 360px"
-                />
-              </div>
-            </div>
+          <div className="flex items-center gap-6 mt-10">
+            <a
+              href="#projects"
+              className="inline-flex items-center gap-2 bg-white text-dark font-semibold
+                         px-7 py-3.5 rounded-full text-sm sm:text-base
+                         hover:bg-white/90 transition-all duration-300"
+            >
+              View My Work
+              <span className="text-lg">&rarr;</span>
+            </a>
+            <Link
+              href="/about"
+              className="text-sm sm:text-base font-medium text-white/70
+                         border-b border-white/30 pb-0.5
+                         hover:text-white hover:border-white/60
+                         transition-all duration-300"
+            >
+              About Me
+            </Link>
           </div>
         </div>
       </div>
 
-      {/* Scroll indicator */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 hidden md:flex flex-col items-center gap-2 animate-float">
-        <span className="text-[10px] font-medium tracking-[0.2em] uppercase text-dark/25 dark:text-white/20">
-          Scroll
-        </span>
-        <ArrowDown size={14} className="text-dark/25 dark:text-white/20" />
+      {/* Social icons — bottom left */}
+      <div className="absolute bottom-8 left-6 md:left-12 lg:left-20 z-10 flex items-center gap-5">
+        {socials.map(({ icon: Icon, href, label }) => (
+          <a
+            key={href}
+            href={href}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={label}
+            className="text-white/40 hover:text-white transition-colors duration-300"
+          >
+            <Icon size={20} />
+          </a>
+        ))}
       </div>
 
-      {/* Large background watermark text */}
+      {/* Decorative circle — bottom right */}
       <div
-        className="absolute bottom-0 left-0 right-0 pointer-events-none select-none overflow-hidden"
+        className="absolute bottom-[-60px] right-[-30px] w-48 h-48 lg:w-64 lg:h-64
+                   rounded-full border border-white/10 z-10 pointer-events-none hidden md:block"
         aria-hidden="true"
-      >
-        <p className="text-[7vw] font-black tracking-[0.12em] text-dark/[0.03] dark:text-white/[0.03] whitespace-nowrap text-center leading-none pb-4">
-          SOFTWARE ENGINEER
-        </p>
-      </div>
+      />
     </section>
   );
 }
