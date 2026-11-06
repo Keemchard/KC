@@ -2,9 +2,20 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { Github, Linkedin, Mail } from "lucide-react";
+import { Github, Linkedin, LucideProps, Mail } from "lucide-react";
+import { ForwardRefExoticComponent, RefAttributes } from "react";
 
-const socials = [
+type SocialObj = {
+  icon: ForwardRefExoticComponent<
+    Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>
+  >;
+  href: string;
+  label: string;
+};
+
+type Social = SocialObj[];
+
+const socials: Social = [
   { icon: Github, href: "https://github.com/Keemchard", label: "GitHub" },
   {
     icon: Linkedin,
@@ -17,6 +28,10 @@ const socials = [
     label: "Email",
   },
 ];
+
+const tumFunction = () => {
+  alert("this is tum");
+};
 
 export default function Hero() {
   return (
@@ -94,6 +109,7 @@ export default function Hero() {
               View My Work
               <span className="text-lg 2xl:text-xl">&rarr;</span>
             </a>
+
             <Link
               href="/about"
               className="text-sm sm:text-base 2xl:text-lg font-medium text-white/70
