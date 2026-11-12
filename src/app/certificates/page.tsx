@@ -43,7 +43,7 @@ export default function CertificatesPage() {
 
           <div>
             <span className="section-label">Credentials</span>
-            <h1 className="text-3xl md:text-4xl font-bold text-dark dark:text-white mb-6">
+            <h1 className="text-3xl md:text-4xl font-semibold text-dark dark:text-white mb-6">
               My Certificates
             </h1>
           </div>
@@ -54,8 +54,8 @@ export default function CertificatesPage() {
                 key={cert.title}
                 className="group bg-white dark:bg-white/[0.04] border border-gray-100
                            dark:border-white/[0.06] rounded-3xl overflow-hidden
-                           hover:border-primary/20 hover:shadow-xl hover:shadow-primary/5
-                           hover:-translate-y-1 transition-all duration-500 flex flex-col"
+                           hover:border-primary/20
+                           transition-colors duration-150 flex flex-col"
               >
                 <div className="relative w-full aspect-[3/2]">
                   <Image
@@ -66,21 +66,21 @@ export default function CertificatesPage() {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-dark/80 via-dark/20 to-transparent" />
                   <span
-                    className="absolute bottom-3 left-4 text-white font-bold text-xs
-                               bg-primary px-2.5 py-1 rounded-full"
+                    className="absolute bottom-3 left-4 text-dark-bg/90 font-medium text-xs
+                               bg-primary/90 px-2.5 py-1 rounded"
                   >
                     {cert.year}
                   </span>
                 </div>
 
                 <div className="p-5 flex-1 flex flex-col gap-2">
-                  <h3 className="font-bold text-dark dark:text-white text-sm leading-snug">
+                  <h3 className="font-medium text-dark dark:text-white text-sm leading-snug">
                     {cert.title}
                   </h3>
                   <p className="text-xs text-dark/50 dark:text-white/40 leading-relaxed">
                     {cert.issuer}
                   </p>
-                  <p className="text-xs text-primary italic mt-auto pt-2 border-t border-gray-100 dark:border-white/5">
+                  <p className="text-xs text-dark/40 dark:text-white/35 mt-auto pt-2 border-t border-gray-100 dark:border-white/5">
                     &ldquo;{cert.quote}&rdquo;
                   </p>
                 </div>

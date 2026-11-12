@@ -70,8 +70,8 @@ export default function ProjectsSection() {
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-10">
           <div>
             <span className="section-label">What I&apos;ve built</span>
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-dark dark:text-white tracking-tight leading-none">
-              PROJECTS
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-semibold text-dark dark:text-white tracking-tight leading-none">
+              Projects
             </h2>
           </div>
           <div className="flex items-end gap-6">
@@ -83,7 +83,7 @@ export default function ProjectsSection() {
                 onClick={() => scroll("left")}
                 className="w-10 h-10 rounded-full border border-dark/10 dark:border-white/10
                            flex items-center justify-center text-dark/40 dark:text-white/40
-                           hover:border-primary hover:text-primary transition-all"
+                           hover:border-primary hover:text-primary transition-colors"
                 aria-label="Previous"
               >
                 <ChevronLeft size={18} />
@@ -92,7 +92,7 @@ export default function ProjectsSection() {
                 onClick={() => scroll("right")}
                 className="w-10 h-10 rounded-full border border-dark/10 dark:border-white/10
                            flex items-center justify-center text-dark/40 dark:text-white/40
-                           hover:border-primary hover:text-primary transition-all"
+                           hover:border-primary hover:text-primary transition-colors"
                 aria-label="Next"
               >
                 <ChevronRight size={18} />
@@ -116,7 +116,7 @@ export default function ProjectsSection() {
                 className="min-w-[280px] sm:min-w-[320px] md:min-w-[340px] max-w-[380px] flex-shrink-0 snap-start
                            bg-white dark:bg-white/[0.04] border border-dark/[0.06] dark:border-white/[0.08]
                            rounded-2xl overflow-hidden flex flex-col
-                           hover:border-primary/25 transition-all duration-300 group"
+                           hover:border-primary/25 transition-colors duration-300 group"
               >
                 {/* Image */}
                 <div className="relative aspect-[16/10] bg-dark/[0.03] dark:bg-white/[0.03] overflow-hidden">
@@ -125,7 +125,7 @@ export default function ProjectsSection() {
                     alt={project.title}
                     fill
                     sizes="380px"
-                    className="object-cover group-hover:scale-105 transition-transform duration-500"
+                    className="object-cover transition-transform duration-300"
                   />
                   <span className="absolute top-3 left-3 px-3 py-1 rounded-full text-[10px] font-bold
                                    bg-dark-bg/70 dark:bg-dark-bg/80 text-white backdrop-blur-sm border border-white/10">
@@ -135,7 +135,7 @@ export default function ProjectsSection() {
 
                 {/* Content */}
                 <div className="p-5 flex flex-col flex-1">
-                  <h3 className="font-bold text-dark dark:text-white text-base mb-2">
+                  <h3 className="font-medium text-dark dark:text-white text-base mb-2">
                     {project.title}
                   </h3>
                   <p className="text-sm text-dark/50 dark:text-white/40 leading-relaxed flex-1 mb-4">
@@ -162,7 +162,7 @@ export default function ProjectsSection() {
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-1.5 text-sm font-medium text-primary
-                               hover:gap-2.5 transition-all duration-300"
+                               hover:opacity-75 transition-opacity duration-150"
                   >
                     View Project
                     <ArrowRight size={14} />

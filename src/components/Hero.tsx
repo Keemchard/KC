@@ -29,10 +29,6 @@ const socials: Social = [
   },
 ];
 
-const tumFunction = () => {
-  alert("this is tum");
-};
-
 export default function Hero() {
   return (
     <section
@@ -84,40 +80,40 @@ export default function Hero() {
       {/* Content */}
       <div className="relative z-10 max-w-7xl 2xl:max-w-[96rem] mx-auto px-6 md:px-12 lg:px-20 2xl:px-28 w-full">
         <div className="max-w-xl 2xl:max-w-2xl">
-          <p className="text-xs sm:text-sm 2xl:text-base font-semibold tracking-[0.3em] uppercase text-white/60 mb-6 2xl:mb-8">
+          <p className="text-xs sm:text-sm 2xl:text-base font-medium text-white/50 mb-6 2xl:mb-8">
             Frontend Engineer
           </p>
 
-          <h1 className="text-5xl sm:text-6xl lg:text-7xl xl:text-8xl 2xl:text-9xl font-bold text-white leading-[1.05] tracking-tight">
+          <h1 className="text-5xl sm:text-6xl lg:text-7xl xl:text-8xl 2xl:text-9xl font-semibold text-white leading-[1.05] tracking-tight">
             Tamio,
             <br />
             Keemchard.
           </h1>
 
           <p className="mt-6 2xl:mt-8 text-base sm:text-lg 2xl:text-xl text-white/50 max-w-md 2xl:max-w-lg leading-relaxed">
-            Crafting seamless web and mobile applications that turn complex
-            business requirements into intuitive user experiences.
+            Building web and mobile applications that turn complex
+            business requirements into clear, usable experiences.
           </p>
 
           <div className="flex items-center gap-6 2xl:gap-8 mt-10 2xl:mt-14">
             <a
               href="#projects"
-              className="inline-flex items-center gap-2 bg-white text-dark font-semibold
+              className="inline-flex items-center gap-2 bg-white text-dark font-medium
                          px-7 py-3.5 2xl:px-9 2xl:py-4 rounded-full text-sm sm:text-base 2xl:text-lg
-                         hover:bg-white/90 transition-all duration-300"
+                         hover:bg-white/90 transition-colors duration-150"
             >
-              View My Work
+              View my work
               <span className="text-lg 2xl:text-xl">&rarr;</span>
             </a>
 
             <Link
               href="/about"
-              className="text-sm sm:text-base 2xl:text-lg font-medium text-white/70
-                         border-b border-white/30 pb-0.5
-                         hover:text-white hover:border-white/60
-                         transition-all duration-300"
+              className="text-sm sm:text-base 2xl:text-lg font-medium text-white/60
+                         border-b border-white/25 pb-0.5
+                         hover:text-white hover:border-white/50
+                         transition-colors duration-150"
             >
-              About Me
+              About me
             </Link>
           </div>
         </div>
@@ -132,19 +128,12 @@ export default function Hero() {
             target="_blank"
             rel="noopener noreferrer"
             aria-label={label}
-            className="text-white/40 hover:text-white transition-colors duration-300"
+            className="text-white/35 hover:text-white/70 transition-colors duration-150"
           >
             <Icon className="w-5 h-5 2xl:w-6 2xl:h-6" />
           </a>
         ))}
       </div>
-
-      {/* Decorative circle — bottom right */}
-      <div
-        className="absolute bottom-[-60px] right-[-30px] w-48 h-48 lg:w-64 lg:h-64 2xl:w-80 2xl:h-80
-                   rounded-full border border-white/10 z-10 pointer-events-none hidden md:block"
-        aria-hidden="true"
-      />
     </section>
   );
 }

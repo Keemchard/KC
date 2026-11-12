@@ -25,7 +25,7 @@ export default function ContactSection() {
           {/* Left — Heading + CTA */}
           <div className="md:col-span-4">
             <span className="section-label">Get in touch</span>
-            <h2 className="text-3xl sm:text-4xl md:text-[2.75rem] font-bold text-dark dark:text-white tracking-tight leading-[1.1]">
+            <h2 className="text-3xl sm:text-4xl md:text-[2.75rem] font-semibold text-dark dark:text-white tracking-tight leading-[1.1]">
               Let&apos;s Work{" "}
               <span className="text-primary">Together</span>
             </h2>
@@ -65,7 +65,7 @@ export default function ContactSection() {
 
           {/* Right — Form */}
           <div className="md:col-span-5">
-            <p className="font-semibold text-sm text-dark dark:text-white mb-4">
+            <p className="font-medium text-sm text-dark dark:text-white mb-4">
               Send a Message
             </p>
             <form
@@ -86,7 +86,7 @@ export default function ContactSection() {
                              border border-dark/[0.08] dark:border-white/[0.08]
                              rounded-xl text-dark dark:text-white placeholder:text-dark/30 dark:placeholder:text-white/25
                              focus:outline-none focus:border-primary/50 focus:ring-1 focus:ring-primary/15
-                             transition-all duration-200 text-sm"
+                             transition-colors duration-150 text-sm"
                 />
                 <input
                   type="email"
@@ -97,7 +97,7 @@ export default function ContactSection() {
                              border border-dark/[0.08] dark:border-white/[0.08]
                              rounded-xl text-dark dark:text-white placeholder:text-dark/30 dark:placeholder:text-white/25
                              focus:outline-none focus:border-primary/50 focus:ring-1 focus:ring-primary/15
-                             transition-all duration-200 text-sm"
+                             transition-colors duration-150 text-sm"
                 />
               </div>
 
@@ -110,7 +110,7 @@ export default function ContactSection() {
                            border border-dark/[0.08] dark:border-white/[0.08]
                            rounded-xl text-dark dark:text-white placeholder:text-dark/30 dark:placeholder:text-white/25
                            focus:outline-none focus:border-primary/50 focus:ring-1 focus:ring-primary/15
-                           transition-all duration-200 text-sm resize-none"
+                           transition-colors duration-150 text-sm resize-none"
               />
 
               <button type="submit" className="btn-primary w-full justify-center">

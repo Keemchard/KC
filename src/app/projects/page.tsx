@@ -120,7 +120,7 @@ function ImageSlideshow({ images }: { images: string[] }) {
 
   const advance = useCallback(
     () => setIndex((i) => (i + 1) % images.length),
-    [images.length]
+    [images.length],
   );
 
   useEffect(() => {
@@ -170,13 +170,16 @@ export default function ProjectsPage() {
             className="inline-flex items-center gap-2 text-sm text-dark/50 dark:text-white/40
                        hover:text-primary transition-colors group mb-6"
           >
-            <ArrowLeft size={16} className="group-hover:-translate-x-1 transition-transform" />
+            <ArrowLeft
+              size={16}
+              className="group-hover:-translate-x-1 transition-transform"
+            />
             Back to Home
           </Link>
 
           <div>
             <span className="section-label">Portfolio</span>
-            <h1 className="text-3xl md:text-4xl font-bold text-dark dark:text-white mb-6">
+            <h1 className="text-3xl md:text-4xl font-semibold text-dark dark:text-white mb-6">
               My Projects
             </h1>
           </div>
@@ -187,8 +190,8 @@ export default function ProjectsPage() {
                 key={project.title}
                 className="group relative bg-white dark:bg-white/[0.04] border border-gray-100
                            dark:border-white/[0.06] rounded-3xl overflow-hidden
-                           hover:border-primary/30 hover:shadow-xl hover:shadow-primary/5
-                           transition-all duration-300 flex flex-col"
+                           hover:border-primary/20
+                           transition-colors duration-150 flex flex-col"
               >
                 <div className="relative w-full aspect-video bg-dark/5 dark:bg-white/5">
                   <ImageSlideshow images={project.images} />
@@ -196,12 +199,14 @@ export default function ProjectsPage() {
 
                 <div className="p-6 flex flex-col flex-1">
                   <div className="flex items-start justify-between gap-4 mb-3">
-                    <h2 className="flex items-center gap-2 text-lg font-bold text-dark dark:text-white">
+                    <h2 className="flex items-center gap-2 text-lg font-medium text-dark dark:text-white">
                       {project.title}
                       {project.featured && (
-                        <span className="text-[10px] font-bold px-2 py-0.5 rounded-full
-                                         bg-primary/10 text-primary border border-primary/20 tracking-wide">
-                          LATEST
+                        <span
+                          className="text-[10px] font-medium px-2 py-0.5 rounded
+                                         bg-primary/10 text-primary border border-primary/20"
+                        >
+                          Latest
                         </span>
                       )}
                     </h2>
@@ -212,7 +217,7 @@ export default function ProjectsPage() {
                           target="_blank"
                           rel="noopener noreferrer"
                           className="p-1.5 rounded-lg text-dark/50 dark:text-white/40
-                                     hover:text-primary hover:bg-primary/10 transition-all"
+                                     hover:text-dark/70 dark:hover:text-white/60 hover:bg-dark/5 dark:hover:bg-white/5 transition-colors duration-150"
                           aria-label="GitHub"
                         >
                           <Github size={18} />
@@ -224,7 +229,7 @@ export default function ProjectsPage() {
                           target="_blank"
                           rel="noopener noreferrer"
                           className="p-1.5 rounded-lg text-dark/50 dark:text-white/40
-                                     hover:text-primary hover:bg-primary/10 transition-all"
+                                     hover:text-dark/70 dark:hover:text-white/60 hover:bg-dark/5 dark:hover:bg-white/5 transition-colors duration-150"
                           aria-label="Live site"
                         >
                           <ExternalLink size={18} />

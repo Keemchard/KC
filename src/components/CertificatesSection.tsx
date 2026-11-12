@@ -40,8 +40,8 @@ export default function CertificatesSection() {
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-10">
           <div>
             <span className="section-label">Credentials</span>
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-dark dark:text-white tracking-tight leading-none">
-              CERTIFICATES
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-semibold text-dark dark:text-white tracking-tight leading-none">
+              Certificates
             </h2>
           </div>
           <div className="flex items-end gap-6">
@@ -53,7 +53,7 @@ export default function CertificatesSection() {
                 onClick={() => scroll("left")}
                 className="w-10 h-10 rounded-full border border-dark/10 dark:border-white/10
                            flex items-center justify-center text-dark/40 dark:text-white/40
-                           hover:border-primary hover:text-primary transition-all"
+                           hover:border-primary hover:text-primary transition-colors"
                 aria-label="Previous"
               >
                 <ChevronLeft size={18} />
@@ -62,7 +62,7 @@ export default function CertificatesSection() {
                 onClick={() => scroll("right")}
                 className="w-10 h-10 rounded-full border border-dark/10 dark:border-white/10
                            flex items-center justify-center text-dark/40 dark:text-white/40
-                           hover:border-primary hover:text-primary transition-all"
+                           hover:border-primary hover:text-primary transition-colors"
                 aria-label="Next"
               >
                 <ChevronRight size={18} />
@@ -84,7 +84,7 @@ export default function CertificatesSection() {
               className="min-w-[220px] sm:min-w-[250px] md:min-w-[260px] flex-shrink-0 snap-start
                          bg-white dark:bg-white/[0.04] border border-dark/[0.06] dark:border-white/[0.08]
                          rounded-2xl overflow-hidden
-                         hover:border-primary/25 transition-all duration-300 group"
+                         hover:border-primary/25 transition-colors duration-300 group"
             >
               {/* Image */}
               <div className="relative aspect-[4/3] bg-dark/[0.03] dark:bg-white/[0.03] overflow-hidden">
@@ -93,14 +93,14 @@ export default function CertificatesSection() {
                   alt={cert.title}
                   fill
                   sizes="280px"
-                  className="object-cover group-hover:scale-105 transition-transform duration-500"
+                  className="object-cover transition-transform duration-300"
                 />
               </div>
 
               {/* Info */}
               <div className="p-4 flex items-start justify-between gap-2">
                 <div>
-                  <h3 className="font-semibold text-dark dark:text-white text-sm leading-snug">
+                  <h3 className="font-medium text-dark dark:text-white text-sm leading-snug">
                     {cert.title}
                   </h3>
                   <p className="text-xs text-dark/40 dark:text-white/35 mt-0.5">

@@ -82,16 +82,12 @@ const experience = [
 ];
 
 const typeBadge: Record<string, string> = {
-  training: "bg-blue-100 text-blue-700 dark:bg-blue-900/40 dark:text-blue-300",
-  internship:
-    "bg-yellow-100 text-yellow-700 dark:bg-yellow-900/40 dark:text-yellow-300",
-  work: "bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-300",
-  partTime:
-    "bg-orange-100 text-orange-700 dark:bg-orange-900/40 dark:text-orange-300",
-  fullTime:
-    "bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-300",
-  contract:
-    "bg-purple-100 text-purple-700 dark:bg-purple-900/40 dark:text-purple-300",
+  training:   "bg-dark/[0.05] dark:bg-white/[0.06] text-dark/55 dark:text-white/45 border border-dark/[0.08] dark:border-white/[0.08]",
+  internship: "bg-dark/[0.05] dark:bg-white/[0.06] text-dark/55 dark:text-white/45 border border-dark/[0.08] dark:border-white/[0.08]",
+  work:       "bg-dark/[0.05] dark:bg-white/[0.06] text-dark/55 dark:text-white/45 border border-dark/[0.08] dark:border-white/[0.08]",
+  partTime:   "bg-dark/[0.05] dark:bg-white/[0.06] text-dark/55 dark:text-white/45 border border-dark/[0.08] dark:border-white/[0.08]",
+  fullTime:   "bg-dark/[0.05] dark:bg-white/[0.06] text-dark/55 dark:text-white/45 border border-dark/[0.08] dark:border-white/[0.08]",
+  contract:   "bg-dark/[0.05] dark:bg-white/[0.06] text-dark/55 dark:text-white/45 border border-dark/[0.08] dark:border-white/[0.08]",
 };
 
 const typeLabel: Record<string, string> = {
@@ -164,7 +160,7 @@ export default function AboutPage() {
             <div className="flex flex-col md:flex-row items-start gap-6 md:gap-12">
               <div className="flex-1">
                 <span className="section-label">About Me</span>
-                <h1 className="text-3xl md:text-4xl font-bold text-dark dark:text-white">
+                <h1 className="text-3xl md:text-4xl font-semibold text-dark dark:text-white">
                   Keemchard Tamio
                 </h1>
                 <p className="text-primary font-medium mt-1">
@@ -199,7 +195,7 @@ export default function AboutPage() {
               </div>
 
               <div className="shrink-0">
-                <div className="w-48 h-48 rounded-full overflow-hidden ring-4 ring-primary/30">
+                <div className="w-48 h-48 rounded-full overflow-hidden ring-1 ring-dark/10 dark:ring-white/10">
                   <Image
                     src="/images/personal/formal-personal-picture.jpg"
                     alt="Keemchard Tamio"
@@ -218,8 +214,8 @@ export default function AboutPage() {
               <button
                 key={t}
                 onClick={() => setTab(t)}
-                className={`flex items-center gap-2 px-5 py-2.5 rounded-lg text-sm font-semibold
-                            capitalize transition-all duration-200
+                className={`flex items-center gap-2 px-5 py-2.5 rounded-lg text-sm font-medium
+                            capitalize transition-colors duration-150
                             ${
                               tab === t
                                 ? "bg-white dark:bg-dark-bg text-dark dark:text-white shadow-sm"
@@ -245,16 +241,16 @@ export default function AboutPage() {
                   <span
                     className="absolute -left-[22px] top-5 w-3 h-3 rounded-full bg-primary
                                ring-4 ring-white dark:ring-dark-bg transition-all duration-200
-                               group-hover:scale-125"
+                               group-hover:scale-110"
                   />
 
                   <div
                     className="bg-white dark:bg-white/[0.04] border border-gray-100 dark:border-white/[0.06]
-                                rounded-2xl p-5 hover:border-primary/30 dark:hover:border-primary/30
-                                transition-all duration-200 hover:shadow-md"
+                                rounded-2xl p-5 hover:border-primary/20 dark:hover:border-primary/20
+                                transition-colors duration-150"
                   >
                     <div className="flex flex-wrap items-start justify-between gap-2 mb-1">
-                      <h3 className="font-semibold text-dark dark:text-white text-sm leading-snug flex items-center gap-2">
+                      <h3 className="font-medium text-dark dark:text-white text-sm leading-snug flex items-center gap-2">
                         {"current" in item &&
                           (item as { current?: boolean }).current && (
                             <span className="relative flex h-2 w-2 shrink-0">
@@ -268,15 +264,15 @@ export default function AboutPage() {
                         {"current" in item &&
                           (item as { current?: boolean }).current && (
                             <span
-                              className="text-[10px] font-bold px-2 py-0.5 rounded-full
+                              className="text-[10px] font-medium px-2 py-0.5 rounded
                                        bg-primary/10 text-primary border border-primary/20"
                             >
-                              CURRENT
+                              Current
                             </span>
                           )}
                         {"type" in item && (
                           <span
-                            className={`text-[10px] font-semibold px-2 py-0.5 rounded-full ${typeBadge[(item as { type: string }).type]}`}
+                            className={`text-[10px] font-medium px-2 py-0.5 rounded ${typeBadge[(item as { type: string }).type]}`}
                           >
                             {typeLabel[(item as { type: string }).type]}
                           </span>

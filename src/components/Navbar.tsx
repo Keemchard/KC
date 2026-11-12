@@ -80,7 +80,7 @@ export default function Navbar() {
     <>
       {/* Desktop */}
       <nav
-        className={`hidden md:flex fixed top-0 w-full z-50 transition-all duration-300
+        className={`hidden md:flex fixed top-0 w-full z-50 transition-colors duration-150
           ${
             inHero
               ? "bg-transparent"
@@ -92,7 +92,7 @@ export default function Navbar() {
         <div className="max-w-7xl mx-auto px-8 lg:px-20 h-16 flex items-center justify-between w-full">
           <Link
             href="/"
-            className={`text-lg font-bold tracking-[0.15em] transition-colors duration-300
+            className={`text-lg font-semibold tracking-[0.15em] transition-colors duration-150
               ${
                 inHero
                   ? "text-white hover:text-white/80"
@@ -114,7 +114,7 @@ export default function Navbar() {
                   onClick={() => {
                     if (item.section) setActive(item.section);
                   }}
-                  className={`relative text-sm font-medium pb-1 transition-all duration-200
+                  className={`relative text-sm font-medium pb-1 transition-colors duration-150
                     ${
                       inHero
                         ? isActive
@@ -168,7 +168,7 @@ export default function Navbar() {
                     if (item.section) setActive(item.section);
                   }}
                   className={`flex flex-col items-center gap-0.5 px-3 py-1.5 min-w-[48px]
-                              transition-all duration-200
+                              transition-colors duration-150
                               ${isActive ? "text-dark dark:text-white" : "text-dark/25 dark:text-white/25"}`}
                 >
                   <item.icon size={18} />
