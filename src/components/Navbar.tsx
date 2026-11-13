@@ -10,6 +10,8 @@ import {
   MessageSquare,
   Sun,
   Moon,
+  Menu,
+  X,
 } from "lucide-react";
 import Link from "next/link";
 
@@ -74,7 +76,10 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", update);
   }, []);
 
+  const [menuOpen, setMenuOpen] = useState(false);
+
   const toggleTheme = () => setTheme(theme === "dark" ? "light" : "dark");
+  const closeMenu = () => setMenuOpen(false);
 
   return (
     <>
@@ -149,47 +154,88 @@ export default function Navbar() {
         </div>
       </nav>
 
-      {/* Mobile bottom bar */}
+      {/* Mobile top bar */}
       <nav
-        className="md:hidden fixed bottom-0 left-0 right-0 z-50
-                   bg-light-bg/95 dark:bg-dark-bg/95 backdrop-blur-xl
-                   border-t border-dark/[0.06] dark:border-white/[0.06]"
+        className={`md:hidden fixed top-0 w-full z-50 transition-colors duration-150
+          ${
+            inHero && !menuOpen
+              ? "bg-transparent"
+              : "bg-light-bg/95 dark:bg-dark-bg/95 backdrop-blur-xl shadow-sm"
+          }`}
       >
-        <ul className="flex items-center justify-around h-14">
-          {navItems.map((item) => {
-            const isActive = !!item.section && active === item.section;
-            return (
-              <li key={item.label}>
-                <Link
-                  href={item.href}
-                  target={"external" in item ? "_blank" : undefined}
-                  rel={"external" in item ? "noopener noreferrer" : undefined}
-                  onClick={() => {
-                    if (item.section) setActive(item.section);
-                  }}
-                  className={`flex flex-col items-center gap-0.5 px-3 py-1.5 min-w-[48px]
-                              transition-colors duration-150
-                              ${isActive ? "text-dark dark:text-white" : "text-dark/25 dark:text-white/25"}`}
-                >
-                  <item.icon size={18} />
-                  <span className="text-[10px] font-medium">{item.label}</span>
-                </Link>
-              </li>
-            );
-          })}
-          <li>
-            <button
-              onClick={toggleTheme}
-              aria-label="Toggle theme"
-              className="flex flex-col items-center gap-0.5 px-3 py-1.5 min-w-[48px]
-                         text-dark/25 dark:text-white/25"
-            >
-              {theme === "dark" ? <Sun size={18} /> : <Moon size={18} />}
-              <span className="text-[10px] font-medium">Theme</span>
-            </button>
-          </li>
-        </ul>
+        <div className="flex items-center justify-between px-6 h-14">
+          <Link
+            href="/"
+            onClick={closeMenu}
+            className={`text-lg font-semibold tracking-[0.15em] transition-colors duration-150
+              ${
+                inHero && !menuOpen
+                  ? "text-white hover:text-white/80"
+                  : "text-dark dark:text-white hover:text-primary"
+              }`}
+          >
+            kc
+          </Link>
+
+          <button
+            onClick={() => setMenuOpen((o) => !o)}
+            aria-label="Toggle menu"
+            className={`w-9 h-9 flex items-center justify-center rounded-lg transition-colors duration-150
+              ${
+                inHero && !menuOpen
+                  ? "text-white/70 hover:text-white"
+                  : "text-dark/50 dark:text-white/50 hover:text-dark dark:hover:text-white"
+              }`}
+          >
+            {menuOpen ? <X size={20} /> : <Menu size={20} />}
+          </button>
+        </div>
+
+        {/* Dropdown menu */}
+        <div
+          className={`overflow-hidden transition-all duration-300 ease-in-out
+            ${menuOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"}`}
+        >
+          <ul className="px-6 pb-6 flex flex-col gap-1 border-t border-dark/[0.06] dark:border-white/[0.06] pt-4">
+            {navItems.map((item) => {
+              const isActive = !!item.section && active === item.section;
+              return (
+                <li key={item.label}>
+                  <Link
+                    href={item.href}
+                    target={"external" in item ? "_blank" : undefined}
+                    rel={"external" in item ? "noopener noreferrer" : undefined}
+                    onClick={() => {
+                      if (item.section) setActive(item.section);
+                      closeMenu();
+                    }}
+                    className={`flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors duration-150
+                      ${
+                        isActive
+                          ? "text-dark dark:text-white bg-dark/[0.05] dark:bg-white/[0.05]"
+                          : "text-dark/45 dark:text-white/40 hover:text-dark/80 dark:hover:text-white/70 hover:bg-dark/[0.03] dark:hover:bg-white/[0.03]"
+                      }`}
+                  >
+                    <item.icon size={16} />
+                    {item.label}
+                    {isActive && (
+                      <span className="ml-auto w-1 h-1 rounded-full bg-primary" />
+                    )}
+                  </Link>
+                </li>
+              );
+            })}
+          </ul>
+        </div>
       </nav>
+
+      {/* Backdrop */}
+      {menuOpen && (
+        <div
+          className="md:hidden fixed inset-0 z-40"
+          onClick={closeMenu}
+        />
+      )}
     </>
   );
 }

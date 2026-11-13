@@ -1,8 +1,7 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
-import { Github, Linkedin, LucideProps, Mail } from "lucide-react";
+import { Github, Linkedin, Mail, LucideProps } from "lucide-react";
 import { ForwardRefExoticComponent, RefAttributes } from "react";
 
 type SocialObj = {
@@ -13,126 +12,122 @@ type SocialObj = {
   label: string;
 };
 
-type Social = SocialObj[];
-
-const socials: Social = [
+const socials: SocialObj[] = [
   { icon: Github, href: "https://github.com/Keemchard", label: "GitHub" },
   {
     icon: Linkedin,
     href: "https://www.linkedin.com/in/keemchard-tamio-498447228/",
     label: "LinkedIn",
   },
-  {
-    icon: Mail,
-    href: "mailto:keemchard.tamio@gmail.com",
-    label: "Email",
-  },
+  { icon: Mail, href: "mailto:keemchard.tamio@gmail.com", label: "Email" },
 ];
 
 export default function Hero() {
   return (
     <section
       id="hero"
-      className="relative min-h-screen flex items-center overflow-hidden bg-dark-bg"
+      className="relative min-h-screen flex flex-col overflow-hidden bg-dark-bg"
     >
-      {/* Portrait — anchored right */}
-      <div className="absolute top-0 right-0 bottom-0 w-[55%] lg:w-[50%] xl:w-[55%] 2xl:w-[50%] hidden md:block">
-        <Image
-          src="/images/personal/new-personal-img.png"
-          alt="Keemchard Tamio"
-          fill
-          className="object-cover object-[center_30%] saturate-[0.88] contrast-[0.96] brightness-[1.02]"
-          priority
-          sizes="55vw"
-        />
-        {/* Film grain overlay */}
-        <div
-          className="absolute inset-0 photo-grain opacity-[0.035] mix-blend-overlay pointer-events-none"
-          aria-hidden="true"
-        />
-        {/* Left fade into background */}
-        <div
-          className="absolute inset-y-0 left-0 w-40 bg-gradient-to-r from-dark-bg to-transparent"
-          aria-hidden="true"
-        />
+      {/* Grain — gives the flat black surface depth */}
+      <div
+        className="absolute inset-0 photo-grain opacity-[0.04] pointer-events-none"
+        aria-hidden="true"
+      />
+
+      {/* Vertical role label — left margin, editorial sidebar */}
+      <div
+        className="absolute left-5 md:left-8 top-1/2 -translate-y-1/2 z-10 hidden lg:flex flex-col items-center gap-3"
+        aria-hidden="true"
+        style={{ writingMode: "vertical-rl", textOrientation: "mixed" }}
+      >
+        <span className="w-px h-12 bg-white/10 inline-block" />
+        <span className="text-[0.6rem] font-medium tracking-[0.2em] text-white/20 uppercase">
+          Frontend · Engineer
+        </span>
       </div>
 
-      {/* Mobile: show image behind with overlay */}
-      <div className="absolute inset-0 md:hidden">
-        <Image
-          src="/images/personal/new-personal-img.png"
-          alt="Keemchard Tamio"
-          fill
-          className="object-cover object-[65%_top] saturate-[0.88] contrast-[0.96] brightness-[1.02]"
-          priority
-          sizes="100vw"
-        />
-        <div
-          className="absolute inset-0 photo-grain opacity-[0.035] mix-blend-overlay pointer-events-none"
-          aria-hidden="true"
-        />
-        <div
-          className="absolute inset-0 bg-gradient-to-t from-dark-bg via-dark-bg/80 to-dark-bg/40"
-          aria-hidden="true"
-        />
-      </div>
+      {/* Main content */}
+      <div className="flex-1 flex flex-col justify-center">
+        <div className="max-w-7xl 2xl:max-w-[96rem] mx-auto px-6 md:px-12 lg:px-20 xl:px-24 2xl:px-28 w-full py-16">
 
-      {/* Content */}
-      <div className="relative z-10 max-w-7xl 2xl:max-w-[96rem] mx-auto px-6 md:px-12 lg:px-20 2xl:px-28 w-full">
-        <div className="max-w-xl 2xl:max-w-2xl">
-          <p className="text-xs sm:text-sm 2xl:text-base font-medium text-white/50 mb-6 2xl:mb-8">
-            Frontend Engineer
-          </p>
+          {/* Display name — the visual */}
+          <h1
+            className="font-semibold leading-[0.92] tracking-tight select-none"
+            style={{ fontSize: "clamp(4rem, 13vw, 13rem)" }}
+          >
+            {/* Line 1: solid white, gold comma */}
+            <span className="block text-white">
+              Tamio<span className="text-primary">,</span>
+            </span>
 
-          <h1 className="text-5xl sm:text-6xl lg:text-7xl xl:text-8xl 2xl:text-9xl font-semibold text-white leading-[1.05] tracking-tight">
-            Tamio,
-            <br />
-            Keemchard.
+            {/* Line 2: outlined/ghost — creates depth and texture */}
+            <span
+              className="block"
+              style={{
+                WebkitTextStroke: "1.5px rgba(255,255,255,0.28)",
+                color: "transparent",
+              }}
+            >
+              Keemchard.
+            </span>
           </h1>
 
-          <p className="mt-6 2xl:mt-8 text-base sm:text-lg 2xl:text-xl text-white/50 max-w-md 2xl:max-w-lg leading-relaxed">
-            Building web and mobile applications that turn complex
-            business requirements into clear, usable experiences.
-          </p>
+          {/* Divider — neutral hairline with gold anchor */}
+          <div className="relative mt-10 2xl:mt-14 mb-10 2xl:mb-14 h-px bg-white/[0.08] w-full">
+            <div
+              className="absolute left-0 top-0 h-full w-24 2xl:w-32 bg-primary"
+              aria-hidden="true"
+            />
+          </div>
 
-          <div className="flex items-center gap-6 2xl:gap-8 mt-10 2xl:mt-14">
-            <a
-              href="#projects"
-              className="inline-flex items-center gap-2 bg-white text-dark font-medium
-                         px-7 py-3.5 2xl:px-9 2xl:py-4 rounded-full text-sm sm:text-base 2xl:text-lg
-                         hover:bg-white/90 transition-colors duration-150"
-            >
-              View my work
-              <span className="text-lg 2xl:text-xl">&rarr;</span>
-            </a>
+          {/* Below divider: description + CTAs */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 2xl:gap-12 items-center">
+            <p className="text-base sm:text-lg 2xl:text-xl text-white/45 max-w-sm 2xl:max-w-md leading-relaxed">
+              Building web and mobile applications that turn complex
+              business requirements into clear, usable experiences.
+            </p>
 
-            <Link
-              href="/about"
-              className="text-sm sm:text-base 2xl:text-lg font-medium text-white/60
-                         border-b border-white/25 pb-0.5
-                         hover:text-white hover:border-white/50
-                         transition-colors duration-150"
-            >
-              About me
-            </Link>
+            <div className="flex items-center gap-6 md:justify-end">
+              <a
+                href="#projects"
+                className="inline-flex items-center gap-2 bg-white text-dark font-medium
+                           px-7 py-3.5 2xl:px-9 2xl:py-4 rounded-full text-sm 2xl:text-base
+                           hover:bg-white/90 transition-colors duration-150"
+              >
+                View my work
+                <span aria-hidden="true">&rarr;</span>
+              </a>
+
+              <Link
+                href="/about"
+                className="text-sm 2xl:text-base font-medium text-white/50
+                           border-b border-white/20 pb-0.5
+                           hover:text-white hover:border-white/40
+                           transition-colors duration-150"
+              >
+                About me
+              </Link>
+            </div>
           </div>
         </div>
       </div>
 
-      {/* Social icons — bottom left */}
-      <div className="absolute bottom-8 left-6 md:left-12 lg:left-20 2xl:left-[calc((100vw-96rem)/2+1.75rem)] z-10 flex items-center gap-5 2xl:gap-6">
-        {socials.map(({ icon: Icon, href, label }) => (
-          <a
-            key={href}
-            href={href}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label={label}
-            className="text-white/35 hover:text-white/70 transition-colors duration-150"
-          >
-            <Icon className="w-5 h-5 2xl:w-6 2xl:h-6" />
-          </a>
-        ))}
+      {/* Bottom row — social icons */}
+      <div className="max-w-7xl 2xl:max-w-[96rem] mx-auto px-6 md:px-12 lg:px-20 xl:px-24 2xl:px-28 w-full pb-8">
+        <div className="flex items-center gap-5 2xl:gap-6">
+          {socials.map(({ icon: Icon, href, label }) => (
+            <a
+              key={href}
+              href={href}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={label}
+              className="text-white/30 hover:text-white/60 transition-colors duration-150"
+            >
+              <Icon className="w-[1.125rem] h-[1.125rem]" />
+            </a>
+          ))}
+        </div>
       </div>
     </section>
   );
