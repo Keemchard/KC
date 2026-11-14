@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowLeft, Github, ExternalLink, ChevronDown, ChevronUp } from "lucide-react";
@@ -319,11 +319,34 @@ const projects: Project[] = [
   },
 ];
 
-function ImageSlideshow({ images }: { images: string[] }) {
+function useInView(threshold = 0.1) {
+  const ref = useRef<HTMLDivElement>(null);
+  const [inView, setInView] = useState(false);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => { if (entry.isIntersecting) { setInView(true); observer.disconnect(); } },
+      { threshold, rootMargin: "200px" },
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, [threshold]);
+
+  return { ref, inView };
+}
+
+function ImageSlideshow({ images, priority = false }: { images: string[]; priority?: boolean }) {
   const [index, setIndex] = useState(0);
+  const [loaded, setLoaded] = useState<Set<number>>(new Set([0]));
 
   const advance = useCallback(
-    () => setIndex((i) => (i + 1) % images.length),
+    () => setIndex((prev) => {
+      const next = (prev + 1) % images.length;
+      setLoaded((s) => new Set(s).add(next));
+      return next;
+    }),
     [images.length],
   );
 
@@ -333,25 +356,39 @@ function ImageSlideshow({ images }: { images: string[] }) {
     return () => clearInterval(id);
   }, [images.length, advance]);
 
+  useEffect(() => {
+    if (images.length <= 1) return;
+    const next = (index + 1) % images.length;
+    setLoaded((s) => new Set(s).add(next));
+  }, [index, images.length]);
+
   return (
     <div className="relative w-full h-full bg-dark/5 dark:bg-white/5">
-      {images.map((src, i) => (
-        <Image
-          key={src}
-          src={src}
-          alt=""
-          fill
-          className={`object-contain p-3 transition-opacity duration-500 ${
-            i === index ? "opacity-100" : "opacity-0 pointer-events-none"
-          }`}
-        />
-      ))}
+      {images.map((src, i) => {
+        if (!loaded.has(i)) return null;
+        return (
+          <Image
+            key={src}
+            src={src}
+            alt=""
+            fill
+            loading={priority && i === 0 ? "eager" : "lazy"}
+            sizes="(max-width: 768px) 100vw, 50vw"
+            className={`object-contain p-3 transition-opacity duration-500 ${
+              i === index ? "opacity-100" : "opacity-0 pointer-events-none"
+            }`}
+          />
+        );
+      })}
       {images.length > 1 && (
         <div className="absolute bottom-2 left-1/2 -translate-x-1/2 flex gap-1">
           {images.map((_, i) => (
             <button
               key={i}
-              onClick={() => setIndex(i)}
+              onClick={() => {
+                setIndex(i);
+                setLoaded((s) => new Set(s).add(i));
+              }}
               className={`h-1 rounded-full transition-all duration-300 ${
                 i === index ? "w-5 bg-primary" : "w-2 bg-white/40"
               }`}
@@ -364,18 +401,24 @@ function ImageSlideshow({ images }: { images: string[] }) {
   );
 }
 
-function ProjectCard({ project }: { project: Project }) {
+function ProjectCard({ project, priority = false }: { project: Project; priority?: boolean }) {
   const [expanded, setExpanded] = useState(false);
+  const { ref, inView } = useInView();
 
   return (
     <div
+      ref={ref}
       className="group relative bg-white dark:bg-white/[0.04] border border-gray-100
                  dark:border-white/[0.06] rounded-3xl overflow-hidden
                  hover:border-primary/20
                  transition-colors duration-150 flex flex-col"
     >
       <div className="relative w-full aspect-video bg-dark/5 dark:bg-white/5">
-        <ImageSlideshow images={project.images} />
+        {inView ? (
+          <ImageSlideshow images={project.images} priority={priority} />
+        ) : (
+          <div className="w-full h-full animate-pulse bg-dark/5 dark:bg-white/5" />
+        )}
       </div>
 
       <div className="p-6 flex flex-col flex-1">
@@ -512,8 +555,8 @@ export default function ProjectsPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {projects.map((project) => (
-              <ProjectCard key={project.title} project={project} />
+            {projects.map((project, i) => (
+              <ProjectCard key={project.title} project={project} priority={i < 2} />
             ))}
           </div>
         </div>

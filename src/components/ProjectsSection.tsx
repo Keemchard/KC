@@ -167,7 +167,8 @@ export default function ProjectsSection() {
                     src={project.image}
                     alt={project.title}
                     fill
-                    sizes="380px"
+                    loading="lazy"
+                    sizes="(max-width: 640px) 280px, (max-width: 768px) 320px, 380px"
                     className="object-cover transition-transform duration-300"
                   />
                   <span className="absolute top-3 left-3 px-3 py-1 rounded-full text-[10px] font-bold
