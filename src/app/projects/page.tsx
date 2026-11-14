@@ -3,7 +3,7 @@
 import { useState, useEffect, useCallback } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowLeft, Github, ExternalLink } from "lucide-react";
+import { ArrowLeft, Github, ExternalLink, ChevronDown, ChevronUp } from "lucide-react";
 import Footer from "@/components/Footer";
 
 interface Project {
@@ -14,6 +14,8 @@ interface Project {
   github?: string;
   live?: string;
   featured?: boolean;
+  features?: string[];
+  stack?: string[];
 }
 
 const projects: Project[] = [
@@ -29,21 +31,191 @@ const projects: Project[] = [
       "/images/hired-log/cover-letters.png",
       "/images/hired-log/resume-match.png",
       "/images/hired-log/interview-prep.png",
-      "/images/hired-log/interview-session.png",
       "/images/hired-log/login.png",
     ],
     tags: [
       "Next.js",
       "TypeScript",
-      "Tailwind CSS",
       "Firebase",
-      "Claude AI",
+      "Gemini AI",
+      "Sass",
       "Vercel",
-      "Kanban",
-      "Analytics",
+    ],
+    stack: [
+      "Next.js 16",
+      "React 19",
+      "TypeScript",
+      "Firebase (Auth & Firestore)",
+      "Gemini AI API",
+      "Sass/SCSS",
+      "react-hot-toast",
+      "react-icons",
+      "uuid",
+      "Vercel (Hosting)",
+    ],
+    features: [
+      "AI auto-fill from job descriptions (text + image)",
+      "AI cover letter generator tailored per application",
+      "Resume match scorer with ATS analysis",
+      "AI interview prep with rated feedback (8 questions/session)",
+      "Kanban board with drag-and-drop pipeline",
+      "Analytics dashboard with response rates and trends",
+      "Chrome extension for saving jobs from LinkedIn, Indeed, Kalibrr",
+      "Custom statuses — add, rename, reorder, delete",
+      "Interview scheduling with date, type, and notes",
+      "Follow-up reminders with overdue alerts",
+      "CSV export, bulk actions, and activity timeline",
+      "Google authentication",
+      "Dark and light themes",
+      "Duplicate application detection",
+      "Full-text search and filtering",
     ],
     live: "https://hired-log.vercel.app",
+    github: "https://github.com/Keemchard/hired-log",
     featured: true,
+  },
+  {
+    title: "hired.log Landing Page",
+    description:
+      "A marketing landing page for the hired.log job application tracker. Showcases all features with a clean, professional design — core features grid, new features section, AI tools breakdown, and a step-by-step how-it-works flow.",
+    images: [
+      "/images/hired-log-landing/hero.png",
+      "/images/hired-log-landing/features.png",
+      "/images/hired-log-landing/ai-tools.png",
+    ],
+    tags: [
+      "Next.js",
+      "TypeScript",
+      "CSS Modules",
+      "React Icons",
+    ],
+    stack: [
+      "Next.js 16",
+      "React 19",
+      "TypeScript",
+      "CSS Modules",
+      "react-icons",
+    ],
+    features: [
+      "Hero section with live app card preview",
+      "Core features grid (6 features)",
+      "New features showcase with interactive demos",
+      "AI tools section with detailed breakdowns",
+      "Step-by-step how-it-works flow",
+      "Responsive design for all screen sizes",
+      "Navigation with section anchoring",
+    ],
+    live: "https://hired-log-landing.vercel.app/",
+    github: "https://github.com/Keemchard/hired-log-landing",
+  },
+  {
+    title: "NARA",
+    description:
+      "A minimal productivity app for managing tasks and notes. Features a dashboard with stats overview, a task manager with list and Kanban board views, and a note editor with color-coding and pinning. All data is stored locally in the browser — no account needed.",
+    images: [
+      "/images/nara/dashboard.png",
+      "/images/nara/tasks.png",
+      "/images/nara/notes.png",
+    ],
+    tags: [
+      "React",
+      "TypeScript",
+      "Tailwind CSS",
+      "React Router",
+      "LocalStorage",
+    ],
+    stack: [
+      "React 18",
+      "TypeScript",
+      "Tailwind CSS",
+      "React Router v6",
+      "React Icons",
+      "LocalStorage (persistence)",
+    ],
+    features: [
+      "Dashboard with greeting, stats, upcoming tasks, and recent notes",
+      "Task management with full CRUD operations",
+      "Kanban board view with drag-and-drop between To Do / In Progress / Done",
+      "List view with filter tabs (all/pending/done)",
+      "Notes editor with color themes (clay, olive, slate, amber)",
+      "Note pinning and search",
+      "Priority levels (low, medium, high) with visual indicators",
+      "Due date tracking with overdue and today badges",
+      "Category tagging for tasks",
+      "Sort by newest, priority, due date, or alphabetical",
+      "Data export/import as JSON backup",
+      "Dark and light themes",
+      "Fully offline — all data stored in browser",
+    ],
+    live: "https://nara-kc.netlify.app",
+    github: "https://github.com/Keemchard/NARA",
+  },
+  {
+    title: "Librong Bulate",
+    description:
+      "A book discovery web app powered by the Open Library API. Browse daily trending books, explore over 20 subject categories, search for any title, and view detailed book information including descriptions, subjects, and external links.",
+    images: [
+      "/images/librong-bulate/home.png",
+      "/images/librong-bulate/subject.png",
+    ],
+    tags: [
+      "React",
+      "TypeScript",
+      "Tailwind CSS",
+      "Open Library API",
+    ],
+    stack: [
+      "React 18",
+      "TypeScript",
+      "Tailwind CSS",
+      "React Router v6",
+      "Open Library API",
+    ],
+    features: [
+      "Daily trending books feed from Open Library",
+      "Browse by 20 subject categories (Fiction, Sci-Fi, History, etc.)",
+      "Full-text book search with result count",
+      "Detailed book view with description, subjects, and links",
+      "Book cover images with lazy loading",
+      "Responsive sidebar navigation with hamburger menu",
+      "Link to Open Library for each book",
+      "Author and publish year metadata",
+    ],
+    live: "https://librong-bulate-kc.netlify.app",
+    github: "https://github.com/Keemchard/Librong-Bulate",
+  },
+  {
+    title: "C19Data",
+    description:
+      "A COVID-19 data tracker that displays real-time statistics for every country worldwide. Fetches live data from the disease.sh API and presents it in a searchable, sortable table with detailed per-country breakdowns including cases, deaths, recoveries, and testing data.",
+    images: [
+      "/images/covid-data/home.png",
+    ],
+    tags: [
+      "React",
+      "TypeScript",
+      "React Router",
+      "REST API",
+    ],
+    stack: [
+      "React 18",
+      "TypeScript",
+      "React Router v6",
+      "disease.sh API",
+    ],
+    features: [
+      "Global COVID-19 statistics table with country flags",
+      "Country search by name",
+      "Continent filtering (Asia, Europe, Africa, Americas, Oceania)",
+      "Multi-column sorting (cases, deaths, recovered, tests, active, population)",
+      "Ascending/descending sort toggle",
+      "Pagination with configurable page sizes (10, 25, 50)",
+      "Detailed per-country view with 12+ data points",
+      "Dedicated pages for infected, tested, and recovered stats",
+      "Responsive design",
+    ],
+    live: "https://librong-bulate-kc.netlify.app",
+    github: "https://github.com/Keemchard/covid-data",
   },
   {
     title: "Resto Flash",
@@ -61,6 +233,12 @@ const projects: Project[] = [
       "/images/restoflash/277124969_881736212665303_6513117117823840663_n.png",
     ],
     tags: ["C#", "Windows Forms", "Desktop App"],
+    stack: ["C#", ".NET Framework", "Windows Forms"],
+    features: [
+      "Pizza ordering system with menu browsing",
+      "Order management and tracking",
+      "User-friendly desktop interface",
+    ],
     github: "https://github.com/Keemchard/Resto-Flash",
   },
   {
@@ -76,6 +254,14 @@ const projects: Project[] = [
       "/images/floodwatch/diagram.png",
     ],
     tags: ["IoT", "Web App", "CRUD"],
+    stack: ["IoT Hardware", "Web Technologies", "CRUD Operations"],
+    features: [
+      "User authentication (sign up/log in)",
+      "Community posts with full CRUD operations",
+      "Automated polls and voting system",
+      "Monthly flood analysis diagrams",
+      "IoT hardware integration for flood monitoring",
+    ],
     github: "https://github.com/FLOODWATCH",
   },
   {
@@ -90,6 +276,12 @@ const projects: Project[] = [
       "/images/bosskc/acad5.png",
     ],
     tags: ["HTML", "CSS", "JavaScript"],
+    stack: ["HTML5", "CSS3", "JavaScript"],
+    features: [
+      "Service information and offerings",
+      "Responsive design",
+      "Contact information",
+    ],
     live: "https://keemchard-acad-servant.netlify.app/",
     github: "https://github.com/Keemchard/AcadServantWebsite",
   },
@@ -102,6 +294,12 @@ const projects: Project[] = [
       "/images/zhitshoe/zhitshoeForportfolio.png",
     ],
     tags: ["HTML", "CSS", "JavaScript", "E-commerce"],
+    stack: ["HTML5", "CSS3", "JavaScript"],
+    features: [
+      "Product browsing and display",
+      "Modern responsive design",
+      "E-commerce layout and UI",
+    ],
     live: "https://zhitshoe.netlify.app/",
     github: "https://github.com/Keemchard/CWD-project-98-",
   },
@@ -111,6 +309,12 @@ const projects: Project[] = [
       "An online program where users can enter newly heard words along with their meaning and pronunciation for others to learn. Supports full CRUD operations on the word entries.",
     images: ["/images/newwords/newWordsAppForportfolio.png"],
     tags: ["Web App", "CRUD", "Educational"],
+    stack: ["Web Technologies", "CRUD Operations"],
+    features: [
+      "Add new words with meaning and pronunciation",
+      "Full CRUD operations on word entries",
+      "Browse and learn new vocabulary",
+    ],
     github: "https://github.com/Keemchard/New-Words-To-My-Ear-App",
   },
 ];
@@ -160,6 +364,129 @@ function ImageSlideshow({ images }: { images: string[] }) {
   );
 }
 
+function ProjectCard({ project }: { project: Project }) {
+  const [expanded, setExpanded] = useState(false);
+
+  return (
+    <div
+      className="group relative bg-white dark:bg-white/[0.04] border border-gray-100
+                 dark:border-white/[0.06] rounded-3xl overflow-hidden
+                 hover:border-primary/20
+                 transition-colors duration-150 flex flex-col"
+    >
+      <div className="relative w-full aspect-video bg-dark/5 dark:bg-white/5">
+        <ImageSlideshow images={project.images} />
+      </div>
+
+      <div className="p-6 flex flex-col flex-1">
+        <div className="flex items-start justify-between gap-4 mb-3">
+          <h2 className="flex items-center gap-2 text-lg font-medium text-dark dark:text-white">
+            {project.title}
+            {project.featured && (
+              <span
+                className="text-[10px] font-medium px-2 py-0.5 rounded
+                               bg-primary/10 text-primary border border-primary/20"
+              >
+                Latest
+              </span>
+            )}
+          </h2>
+          <div className="flex gap-2 shrink-0">
+            {project.github && (
+              <a
+                href={project.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-1.5 rounded-lg text-dark/50 dark:text-white/40
+                           hover:text-dark/70 dark:hover:text-white/60 hover:bg-dark/5 dark:hover:bg-white/5 transition-colors duration-150"
+                aria-label="GitHub"
+              >
+                <Github size={18} />
+              </a>
+            )}
+            {project.live && (
+              <a
+                href={project.live}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-1.5 rounded-lg text-dark/50 dark:text-white/40
+                           hover:text-dark/70 dark:hover:text-white/60 hover:bg-dark/5 dark:hover:bg-white/5 transition-colors duration-150"
+                aria-label="Live site"
+              >
+                <ExternalLink size={18} />
+              </a>
+            )}
+          </div>
+        </div>
+
+        <p className="text-sm text-dark/65 dark:text-white/55 leading-relaxed">
+          {project.description}
+        </p>
+
+        {/* Tech Stack */}
+        {project.stack && project.stack.length > 0 && (
+          <div className="mt-4">
+            <p className="text-[11px] font-medium text-dark/40 dark:text-white/30 uppercase tracking-wider mb-2">
+              Tech Stack
+            </p>
+            <div className="flex flex-wrap gap-1.5">
+              {project.stack.map((tech) => (
+                <span
+                  key={tech}
+                  className="text-[11px] px-2 py-0.5 rounded-md bg-primary/5 dark:bg-primary/10
+                             text-primary/80 dark:text-primary/70 font-medium"
+                >
+                  {tech}
+                </span>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* Features (collapsible) */}
+        {project.features && project.features.length > 0 && (
+          <div className="mt-4">
+            <button
+              onClick={() => setExpanded(!expanded)}
+              className="flex items-center gap-1.5 text-[11px] font-medium text-dark/40 dark:text-white/30
+                         uppercase tracking-wider hover:text-primary transition-colors"
+            >
+              Features ({project.features.length})
+              {expanded ? <ChevronUp size={12} /> : <ChevronDown size={12} />}
+            </button>
+            {expanded && (
+              <ul className="mt-2 space-y-1">
+                {project.features.map((feature) => (
+                  <li
+                    key={feature}
+                    className="text-xs text-dark/55 dark:text-white/45 leading-relaxed flex items-start gap-2"
+                  >
+                    <span className="text-primary mt-1.5 shrink-0 w-1 h-1 rounded-full bg-primary" />
+                    {feature}
+                  </li>
+                ))}
+              </ul>
+            )}
+          </div>
+        )}
+
+        <div className="flex flex-wrap gap-2 mt-4 pt-4 border-t border-dark/5 dark:border-white/5">
+          {project.tags.map((tag) => (
+            <span
+              key={tag}
+              className="text-xs px-2.5 py-1 rounded-full bg-dark/5 dark:bg-white/5
+                         text-dark/60 dark:text-white/50 font-medium
+                         border border-dark/10 dark:border-white/10"
+            >
+              {tag}
+            </span>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export default function ProjectsPage() {
   return (
     <>
@@ -185,77 +512,8 @@ export default function ProjectsPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {projects.map((project, idx) => (
-              <div
-                key={project.title}
-                className="group relative bg-white dark:bg-white/[0.04] border border-gray-100
-                           dark:border-white/[0.06] rounded-3xl overflow-hidden
-                           hover:border-primary/20
-                           transition-colors duration-150 flex flex-col"
-              >
-                <div className="relative w-full aspect-video bg-dark/5 dark:bg-white/5">
-                  <ImageSlideshow images={project.images} />
-                </div>
-
-                <div className="p-6 flex flex-col flex-1">
-                  <div className="flex items-start justify-between gap-4 mb-3">
-                    <h2 className="flex items-center gap-2 text-lg font-medium text-dark dark:text-white">
-                      {project.title}
-                      {project.featured && (
-                        <span
-                          className="text-[10px] font-medium px-2 py-0.5 rounded
-                                         bg-primary/10 text-primary border border-primary/20"
-                        >
-                          Latest
-                        </span>
-                      )}
-                    </h2>
-                    <div className="flex gap-2 shrink-0">
-                      {project.github && (
-                        <a
-                          href={project.github}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="p-1.5 rounded-lg text-dark/50 dark:text-white/40
-                                     hover:text-dark/70 dark:hover:text-white/60 hover:bg-dark/5 dark:hover:bg-white/5 transition-colors duration-150"
-                          aria-label="GitHub"
-                        >
-                          <Github size={18} />
-                        </a>
-                      )}
-                      {project.live && (
-                        <a
-                          href={project.live}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="p-1.5 rounded-lg text-dark/50 dark:text-white/40
-                                     hover:text-dark/70 dark:hover:text-white/60 hover:bg-dark/5 dark:hover:bg-white/5 transition-colors duration-150"
-                          aria-label="Live site"
-                        >
-                          <ExternalLink size={18} />
-                        </a>
-                      )}
-                    </div>
-                  </div>
-
-                  <p className="text-sm text-dark/65 dark:text-white/55 leading-relaxed flex-1">
-                    {project.description}
-                  </p>
-
-                  <div className="flex flex-wrap gap-2 mt-4">
-                    {project.tags.map((tag) => (
-                      <span
-                        key={tag}
-                        className="text-xs px-2.5 py-1 rounded-full bg-dark/5 dark:bg-white/5
-                                   text-dark/60 dark:text-white/50 font-medium
-                                   border border-dark/10 dark:border-white/10"
-                      >
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              </div>
+            {projects.map((project) => (
+              <ProjectCard key={project.title} project={project} />
             ))}
           </div>
         </div>

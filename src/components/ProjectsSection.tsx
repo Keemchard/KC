@@ -11,9 +11,50 @@ const projects = [
     description:
       "A full-stack job application tracker with AI-powered auto-fill, cover letter generator, resume match scorer, and interview prep mode.",
     image: "/images/hired-log/dashboard.png",
-    tags: ["Next.js", "TypeScript", "Firebase", "Claude AI"],
+    tags: ["Next.js", "TypeScript", "Firebase", "Gemini AI"],
     type: "Web App",
     live: "https://hired-log.vercel.app",
+    github: "https://github.com/Keemchard/hired-log",
+  },
+  {
+    title: "hired.log Landing",
+    description:
+      "Marketing landing page for hired.log — showcases features, AI tools, and a step-by-step how-it-works flow.",
+    image: "/images/hired-log-landing/hero.png",
+    tags: ["Next.js", "TypeScript", "CSS Modules"],
+    type: "Landing Page",
+    live: "https://hired-log-landing.vercel.app/",
+    github: "https://github.com/Keemchard/hired-log-landing",
+  },
+  {
+    title: "NARA",
+    description:
+      "A minimal productivity app with tasks and notes. Dashboard, Kanban board, color-coded notes — all stored locally.",
+    image: "/images/nara/dashboard.png",
+    tags: ["React", "TypeScript", "Tailwind CSS"],
+    type: "Web App",
+    live: "https://nara-kc.netlify.app",
+    github: "https://github.com/Keemchard/NARA",
+  },
+  {
+    title: "Librong Bulate",
+    description:
+      "A book discovery app powered by Open Library API. Browse trending books, explore subjects, and search any title.",
+    image: "/images/librong-bulate/home.png",
+    tags: ["React", "TypeScript", "Tailwind CSS"],
+    type: "Web App",
+    live: "https://librong-bulate-kc.netlify.app",
+    github: "https://github.com/Keemchard/Librong-Bulate",
+  },
+  {
+    title: "C19Data",
+    description:
+      "COVID-19 data tracker with real-time stats for every country. Searchable tables, continent filtering, and detailed views.",
+    image: "/images/covid-data/home.png",
+    tags: ["React", "TypeScript", "REST API"],
+    type: "Web App",
+    live: "https://librong-bulate-kc.netlify.app",
+    github: "https://github.com/Keemchard/covid-data",
   },
   {
     title: "Resto Flash",
@@ -41,6 +82,7 @@ const projects = [
     tags: ["HTML", "CSS", "JavaScript"],
     type: "Web App",
     live: "https://zhitshoe.netlify.app/",
+    github: "https://github.com/Keemchard/CWD-project-98-",
   },
   {
     title: "BossKC",
@@ -50,6 +92,7 @@ const projects = [
     tags: ["HTML", "CSS", "JavaScript"],
     type: "Web App",
     live: "https://keemchard-acad-servant.netlify.app/",
+    github: "https://github.com/Keemchard/AcadServantWebsite",
   },
 ];
 
