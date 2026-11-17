@@ -7,6 +7,16 @@ import { ChevronLeft, ChevronRight, ArrowRight } from "lucide-react";
 
 const projects = [
   {
+    title: "LCC Web",
+    description:
+      "A full-stack church management app — public website with dynamic content, admin dashboard with finance tracking, budget planning, property management, and role-based access control.",
+    image: "/images/lcc-web/image.png",
+    tags: ["Next.js", "TypeScript", "Firebase", "Vercel Blob"],
+    type: "Web App",
+    live: "https://lcc-web.vercel.app",
+    github: "https://github.com/Keemchard/lcc-web",
+  },
+  {
     title: "hired.log",
     description:
       "A full-stack job application tracker with AI-powered auto-fill, cover letter generator, resume match scorer, and interview prep mode.",
@@ -103,7 +113,10 @@ export default function ProjectsSection() {
     if (!scrollRef.current) return;
     const card = scrollRef.current.querySelector<HTMLElement>("[data-card]");
     const w = (card?.offsetWidth ?? 350) + 16;
-    scrollRef.current.scrollBy({ left: dir === "left" ? -w : w, behavior: "smooth" });
+    scrollRef.current.scrollBy({
+      left: dir === "left" ? -w : w,
+      behavior: "smooth",
+    });
   };
 
   return (
@@ -119,7 +132,9 @@ export default function ProjectsSection() {
           </div>
           <div className="flex items-end gap-6">
             <p className="text-sm text-dark/50 dark:text-white/40 max-w-xs leading-relaxed hidden md:block">
-              A collection of real-world projects where I applied modern web technologies to solve problems and create meaningful user experiences.
+              A collection of real-world projects where I applied modern web
+              technologies to solve problems and create meaningful user
+              experiences.
             </p>
             <div className="flex gap-2 shrink-0">
               <button
@@ -171,8 +186,10 @@ export default function ProjectsSection() {
                     sizes="(max-width: 640px) 280px, (max-width: 768px) 320px, 380px"
                     className="object-cover transition-transform duration-300"
                   />
-                  <span className="absolute top-3 left-3 px-3 py-1 rounded-full text-[10px] font-bold
-                                   bg-dark-bg/70 dark:bg-dark-bg/80 text-white backdrop-blur-sm border border-white/10">
+                  <span
+                    className="absolute top-3 left-3 px-3 py-1 rounded-full text-[10px] font-bold
+                                   bg-dark-bg/70 dark:bg-dark-bg/80 text-white backdrop-blur-sm border border-white/10"
+                  >
                     {project.type}
                   </span>
                 </div>

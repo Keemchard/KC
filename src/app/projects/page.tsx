@@ -3,7 +3,13 @@
 import { useState, useEffect, useCallback, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowLeft, Github, ExternalLink, ChevronDown, ChevronUp } from "lucide-react";
+import {
+  ArrowLeft,
+  Github,
+  ExternalLink,
+  ChevronDown,
+  ChevronUp,
+} from "lucide-react";
 import Footer from "@/components/Footer";
 
 interface Project {
@@ -20,6 +26,54 @@ interface Project {
 
 const projects: Project[] = [
   {
+    title: "LCC Web",
+    description:
+      "A full-stack church management web application for Livingwater Community Church in Tanza, Cavite. Public website with dynamic content (carousel, service times, about page), plus a comprehensive admin dashboard featuring finance tracking with auto-computed reports, annual budget planning with Budget vs Actual comparison, property/asset management with borrow log, and role-based access control with approval workflow.",
+    images: [
+      "/images/lcc-web/image.png",
+      "/images/lcc-web/image copy.png",
+      "/images/lcc-web/image copy 2.png",
+      "/images/lcc-web/image copy 3.png",
+      "/images/lcc-web/image copy 4.png",
+      "/images/lcc-web/image copy 5.png",
+      "/images/lcc-web/image copy 6.png",
+      "/images/lcc-web/image copy 7.png",
+    ],
+    tags: ["Next.js", "TypeScript", "Firebase", "Vercel Blob", "SCSS"],
+    stack: [
+      "Next.js 16",
+      "React 19",
+      "TypeScript",
+      "Firebase (Auth & Firestore)",
+      "Vercel Blob (Image Storage)",
+      "SCSS Modules",
+      "Embla Carousel",
+      "Leaflet Maps",
+      "Font Awesome",
+      "Vercel (Hosting)",
+    ],
+    features: [
+      "Public church website with SEO, JSON-LD, Open Graph",
+      "Dynamic carousel and service times managed from admin",
+      "Finance dashboard with monthly receipts & disbursements reports",
+      "Church building fund tracking (separate from general fund)",
+      "Annual budget planning with 9 configurable ministry sections",
+      "Budget vs Actual comparison with variance analysis and charts",
+      "Property/asset inventory with condition tracking",
+      "Maintenance history log per asset",
+      "Borrow log with check-in/out tracking",
+      "Printable reports matching paper format (finance + property)",
+      "Role-based auth: pending → admin → supreme admin",
+      "30-minute inactivity auto-logout",
+      "Image compression before upload (WebP, max 1920x1080)",
+      "Drag-to-reorder for carousel slides and service times",
+      "Change history audit trail with field-level diffs",
+    ],
+    live: "https://lcc-web.vercel.app",
+    github: "https://github.com/Keemchard/lcc-web",
+    featured: true,
+  },
+  {
     title: "hired.log",
     description:
       "A full-stack job application tracker built to document and streamline the job hunt. Features AI-powered auto-fill that extracts company, role, location, and salary from raw job description text — no manual entry needed. Also includes an AI Cover Letter generator tailored per application, a Resume Match scorer that compares your resume against a JD, and an AI Interview Prep mode with categorized practice questions and live feedback. Backed by a Kanban board, analytics dashboard, and Google Auth.",
@@ -33,14 +87,7 @@ const projects: Project[] = [
       "/images/hired-log/interview-prep.png",
       "/images/hired-log/login.png",
     ],
-    tags: [
-      "Next.js",
-      "TypeScript",
-      "Firebase",
-      "Gemini AI",
-      "Sass",
-      "Vercel",
-    ],
+    tags: ["Next.js", "TypeScript", "Firebase", "Gemini AI", "Sass", "Vercel"],
     stack: [
       "Next.js 16",
       "React 19",
@@ -83,12 +130,7 @@ const projects: Project[] = [
       "/images/hired-log-landing/features.png",
       "/images/hired-log-landing/ai-tools.png",
     ],
-    tags: [
-      "Next.js",
-      "TypeScript",
-      "CSS Modules",
-      "React Icons",
-    ],
+    tags: ["Next.js", "TypeScript", "CSS Modules", "React Icons"],
     stack: [
       "Next.js 16",
       "React 19",
@@ -158,12 +200,7 @@ const projects: Project[] = [
       "/images/librong-bulate/home.png",
       "/images/librong-bulate/subject.png",
     ],
-    tags: [
-      "React",
-      "TypeScript",
-      "Tailwind CSS",
-      "Open Library API",
-    ],
+    tags: ["React", "TypeScript", "Tailwind CSS", "Open Library API"],
     stack: [
       "React 18",
       "TypeScript",
@@ -188,21 +225,9 @@ const projects: Project[] = [
     title: "C19Data",
     description:
       "A COVID-19 data tracker that displays real-time statistics for every country worldwide. Fetches live data from the disease.sh API and presents it in a searchable, sortable table with detailed per-country breakdowns including cases, deaths, recoveries, and testing data.",
-    images: [
-      "/images/covid-data/home.png",
-    ],
-    tags: [
-      "React",
-      "TypeScript",
-      "React Router",
-      "REST API",
-    ],
-    stack: [
-      "React 18",
-      "TypeScript",
-      "React Router v6",
-      "disease.sh API",
-    ],
+    images: ["/images/covid-data/home.png"],
+    tags: ["React", "TypeScript", "React Router", "REST API"],
+    stack: ["React 18", "TypeScript", "React Router v6", "disease.sh API"],
     features: [
       "Global COVID-19 statistics table with country flags",
       "Country search by name",
@@ -327,7 +352,12 @@ function useInView(threshold = 0.1) {
     const el = ref.current;
     if (!el) return;
     const observer = new IntersectionObserver(
-      ([entry]) => { if (entry.isIntersecting) { setInView(true); observer.disconnect(); } },
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setInView(true);
+          observer.disconnect();
+        }
+      },
       { threshold, rootMargin: "200px" },
     );
     observer.observe(el);
@@ -337,16 +367,23 @@ function useInView(threshold = 0.1) {
   return { ref, inView };
 }
 
-function ImageSlideshow({ images, priority = false }: { images: string[]; priority?: boolean }) {
+function ImageSlideshow({
+  images,
+  priority = false,
+}: {
+  images: string[];
+  priority?: boolean;
+}) {
   const [index, setIndex] = useState(0);
   const [loaded, setLoaded] = useState<Set<number>>(new Set([0]));
 
   const advance = useCallback(
-    () => setIndex((prev) => {
-      const next = (prev + 1) % images.length;
-      setLoaded((s) => new Set(s).add(next));
-      return next;
-    }),
+    () =>
+      setIndex((prev) => {
+        const next = (prev + 1) % images.length;
+        setLoaded((s) => new Set(s).add(next));
+        return next;
+      }),
     [images.length],
   );
 
@@ -401,7 +438,13 @@ function ImageSlideshow({ images, priority = false }: { images: string[]; priori
   );
 }
 
-function ProjectCard({ project, priority = false }: { project: Project; priority?: boolean }) {
+function ProjectCard({
+  project,
+  priority = false,
+}: {
+  project: Project;
+  priority?: boolean;
+}) {
   const [expanded, setExpanded] = useState(false);
   const { ref, inView } = useInView();
 
@@ -556,7 +599,11 @@ export default function ProjectsPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {projects.map((project, i) => (
-              <ProjectCard key={project.title} project={project} priority={i < 2} />
+              <ProjectCard
+                key={project.title}
+                project={project}
+                priority={i < 2}
+              />
             ))}
           </div>
         </div>
