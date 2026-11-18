@@ -16,7 +16,7 @@ interface Project {
   title: string;
   description: string;
   images: string[];
-  tags: string[];
+  tags?: string[];
   github?: string;
   live?: string;
   featured?: boolean;
@@ -39,7 +39,6 @@ const projects: Project[] = [
       "/images/lcc-web/image copy 6.png",
       "/images/lcc-web/image copy 7.png",
     ],
-    tags: ["Next.js", "TypeScript", "Firebase", "Vercel Blob", "SCSS"],
     stack: [
       "Next.js 16",
       "React 19",
@@ -87,17 +86,12 @@ const projects: Project[] = [
       "/images/hired-log/interview-prep.png",
       "/images/hired-log/login.png",
     ],
-    tags: ["Next.js", "TypeScript", "Firebase", "Gemini AI", "Sass", "Vercel"],
     stack: [
-      "Next.js 16",
-      "React 19",
+      "Next.js",
       "TypeScript",
       "Firebase (Auth & Firestore)",
       "Gemini AI API",
       "Sass/SCSS",
-      "react-hot-toast",
-      "react-icons",
-      "uuid",
       "Vercel (Hosting)",
     ],
     features: [
@@ -130,7 +124,6 @@ const projects: Project[] = [
       "/images/hired-log-landing/features.png",
       "/images/hired-log-landing/ai-tools.png",
     ],
-    tags: ["Next.js", "TypeScript", "CSS Modules", "React Icons"],
     stack: [
       "Next.js 16",
       "React 19",
@@ -159,13 +152,7 @@ const projects: Project[] = [
       "/images/nara/tasks.png",
       "/images/nara/notes.png",
     ],
-    tags: [
-      "React",
-      "TypeScript",
-      "Tailwind CSS",
-      "React Router",
-      "LocalStorage",
-    ],
+
     stack: [
       "React 18",
       "TypeScript",
@@ -200,7 +187,6 @@ const projects: Project[] = [
       "/images/librong-bulate/home.png",
       "/images/librong-bulate/subject.png",
     ],
-    tags: ["React", "TypeScript", "Tailwind CSS", "Open Library API"],
     stack: [
       "React 18",
       "TypeScript",
@@ -226,7 +212,6 @@ const projects: Project[] = [
     description:
       "A COVID-19 data tracker that displays real-time statistics for every country worldwide. Fetches live data from the disease.sh API and presents it in a searchable, sortable table with detailed per-country breakdowns including cases, deaths, recoveries, and testing data.",
     images: ["/images/covid-data/home.png"],
-    tags: ["React", "TypeScript", "React Router", "REST API"],
     stack: ["React 18", "TypeScript", "React Router v6", "disease.sh API"],
     features: [
       "Global COVID-19 statistics table with country flags",
@@ -257,7 +242,6 @@ const projects: Project[] = [
       "/images/restoflash/276152527_987406105211801_4291575818986994336_n.png",
       "/images/restoflash/277124969_881736212665303_6513117117823840663_n.png",
     ],
-    tags: ["C#", "Windows Forms", "Desktop App"],
     stack: ["C#", ".NET Framework", "Windows Forms"],
     features: [
       "Pizza ordering system with menu browsing",
@@ -278,7 +262,6 @@ const projects: Project[] = [
       "/images/floodwatch/flupdates.png",
       "/images/floodwatch/diagram.png",
     ],
-    tags: ["IoT", "Web App", "CRUD"],
     stack: ["IoT Hardware", "Web Technologies", "CRUD Operations"],
     features: [
       "User authentication (sign up/log in)",
@@ -300,7 +283,6 @@ const projects: Project[] = [
       "/images/bosskc/acad4.png",
       "/images/bosskc/acad5.png",
     ],
-    tags: ["HTML", "CSS", "JavaScript"],
     stack: ["HTML5", "CSS3", "JavaScript"],
     features: [
       "Service information and offerings",
@@ -318,7 +300,6 @@ const projects: Project[] = [
       "/images/zhitshoe/zhit-shoe-3-removebg-preview.png",
       "/images/zhitshoe/zhitshoeForportfolio.png",
     ],
-    tags: ["HTML", "CSS", "JavaScript", "E-commerce"],
     stack: ["HTML5", "CSS3", "JavaScript"],
     features: [
       "Product browsing and display",
@@ -333,7 +314,6 @@ const projects: Project[] = [
     description:
       "An online program where users can enter newly heard words along with their meaning and pronunciation for others to learn. Supports full CRUD operations on the word entries.",
     images: ["/images/newwords/newWordsAppForportfolio.png"],
-    tags: ["Web App", "CRUD", "Educational"],
     stack: ["Web Technologies", "CRUD Operations"],
     features: [
       "Add new words with meaning and pronunciation",
@@ -555,19 +535,20 @@ function ProjectCard({
             )}
           </div>
         )}
-
-        <div className="flex flex-wrap gap-2 mt-4 pt-4 border-t border-dark/5 dark:border-white/5">
-          {project.tags.map((tag) => (
-            <span
-              key={tag}
-              className="text-xs px-2.5 py-1 rounded-full bg-dark/5 dark:bg-white/5
+        {project?.tags && (
+          <div className="flex flex-wrap gap-2 mt-4 pt-4 border-t border-dark/5 dark:border-white/5">
+            {project.tags.map((tag) => (
+              <span
+                key={tag}
+                className="text-xs px-2.5 py-1 rounded-full bg-dark/5 dark:bg-white/5
                          text-dark/60 dark:text-white/50 font-medium
                          border border-dark/10 dark:border-white/10"
-            >
-              {tag}
-            </span>
-          ))}
-        </div>
+              >
+                {tag}
+              </span>
+            ))}
+          </div>
+        )}
       </div>
     </div>
   );

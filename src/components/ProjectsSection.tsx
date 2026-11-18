@@ -21,7 +21,7 @@ const projects = [
     description:
       "A full-stack job application tracker with AI-powered auto-fill, cover letter generator, resume match scorer, and interview prep mode.",
     image: "/images/hired-log/dashboard.png",
-    tags: ["Next.js", "TypeScript", "Firebase", "Gemini AI"],
+    tags: ["Next.js", "TypeScript", "Firebase", "Gemini AI (key)"],
     type: "Web App",
     live: "https://hired-log.vercel.app",
     github: "https://github.com/Keemchard/hired-log",
@@ -31,7 +31,7 @@ const projects = [
     description:
       "Marketing landing page for hired.log — showcases features, AI tools, and a step-by-step how-it-works flow.",
     image: "/images/hired-log-landing/hero.png",
-    tags: ["Next.js", "TypeScript", "CSS Modules"],
+    tags: ["Next.js", "TypeScript"],
     type: "Landing Page",
     live: "https://hired-log-landing.vercel.app/",
     github: "https://github.com/Keemchard/hired-log-landing",
@@ -61,7 +61,7 @@ const projects = [
     description:
       "COVID-19 data tracker with real-time stats for every country. Searchable tables, continent filtering, and detailed views.",
     image: "/images/covid-data/home.png",
-    tags: ["React", "TypeScript", "REST API"],
+    tags: ["React", "TypeScript", "Covid public API"],
     type: "Web App",
     live: "https://librong-bulate-kc.netlify.app",
     github: "https://github.com/Keemchard/covid-data",
@@ -80,7 +80,7 @@ const projects = [
     description:
       "A web-based IoT application for flood monitoring with user posts, automated polls, and monthly analysis diagrams.",
     image: "/images/floodwatch/post.png",
-    tags: ["IoT", "Web App", "CRUD"],
+    tags: ["IoT", "Angular", "Springboot", "PostgreSQL"],
     type: "Web App",
     github: "https://github.com/FLOODWATCH",
   },
@@ -89,7 +89,7 @@ const projects = [
     description:
       "An e-commerce website with modern responsive design, created during front-end training at Mindtech.",
     image: "/images/zhitshoe/zhitshoeForportfolio.png",
-    tags: ["HTML", "CSS", "JavaScript"],
+    tags: ["Vanilla FE", "HTML", "CSS", "JavaScript"],
     type: "Web App",
     live: "https://zhitshoe.netlify.app/",
     github: "https://github.com/Keemchard/CWD-project-98-",
@@ -99,7 +99,7 @@ const projects = [
     description:
       "An academic business service website with all relevant information about acad servant services.",
     image: "/images/bosskc/bosskcForPortfolio.png",
-    tags: ["HTML", "CSS", "JavaScript"],
+    tags: ["Vanilla FE", "HTML", "CSS", "JavaScript"],
     type: "Web App",
     live: "https://keemchard-acad-servant.netlify.app/",
     github: "https://github.com/Keemchard/AcadServantWebsite",
